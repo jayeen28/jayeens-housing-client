@@ -7,19 +7,17 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import NavMenu from './NavMenu/NavMenu';
-import { Container } from '@mui/material';
 
 const Header = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" sx={{ backgroundColor: '#FFFFFF' }}>
                 <Toolbar>
                     <IconButton
                         size="large"
                         edge="start"
-                        color="inherit"
                         aria-label="menu"
-                        sx={{ mr: 2 }}
+                        sx={{ mr: 2, color: '#F95733' }}
                     >
                         <MenuIcon />
                     </IconButton>
