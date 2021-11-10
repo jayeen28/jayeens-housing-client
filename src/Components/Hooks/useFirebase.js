@@ -1,5 +1,5 @@
 import initializeAuthentication from "../Firebase/firebase.init";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 
 //INITIALIZE AUTHENTICATION
@@ -15,9 +15,17 @@ const useFirebase = () => {
             .then(res => setuser(res.user))
             .catch(error => seterror(error.message))
     }
+
+    //SIGN IN USER
+    const userSignin = (email, passoword) => {
+        signInWithEmailAndPassword(auth, email, passoword)
+            .then(res => setuser(res.user))
+            .catch(error => seterror(error.message));
+    }
     console.log(user)
     return {
         userSignup,
+        userSignin,
         user,
         error,
     }
