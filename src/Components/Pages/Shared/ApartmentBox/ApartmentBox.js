@@ -6,9 +6,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const ApartmentBox = ({ apartment }) => {
-    const { name, description, img, price } = apartment;
+    const { _id, name, description, img, price } = apartment;
     return (
         <Grid item xs={12} sm={12} md={4} lg={4}>
             <Card>
@@ -28,7 +29,7 @@ const ApartmentBox = ({ apartment }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Book now</Button>
+                    <Link to={`/apartment/book/${_id}`}>Book</Link>
                 </CardActions>
             </Card>
         </Grid>

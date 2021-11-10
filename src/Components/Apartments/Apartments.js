@@ -1,8 +1,8 @@
-import { Container, Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import ApartmentBox from '../Shared/ApartmentBox/ApartmentBox';
+import { Container, Grid } from '@mui/material';
+import ApartmentBox from '../Pages/Shared/ApartmentBox/ApartmentBox';
 
-const Explore = () => {
+const Apartments = () => {
     const [apartments, setapartments] = useState([]);
     useEffect(() => {
         fetch('https://obscure-refuge-52189.herokuapp.com/apartments')
@@ -25,4 +25,4 @@ const Explore = () => {
     );
 };
 
-export default Explore;
+export default Apartments;

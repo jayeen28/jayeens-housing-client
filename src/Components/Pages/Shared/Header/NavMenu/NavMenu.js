@@ -9,7 +9,7 @@ const NavMenu = () => {
     return (
         <Box>
             <Typography>
-                <Link to='/explore'>Explore</Link>
+                <Link to='/apartments'>Apartments</Link>
                 {
                     user.email ?
                         <>

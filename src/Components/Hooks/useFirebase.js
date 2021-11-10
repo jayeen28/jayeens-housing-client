@@ -52,7 +52,6 @@ const useFirebase = () => {
             return () => unsubscribed;
         })
     }, [auth])
-    console.log(user)
     return {
         userSignup,
         userSignin,
