@@ -10,26 +10,28 @@ import NavMenu from './NavMenu/NavMenu';
 
 const Header = () => {
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static" sx={{ backgroundColor: '#FFFFFF' }}>
-                <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        aria-label="menu"
-                        sx={{ mr: 2, color: '#F95733' }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        <Link to='/'>
-                            Jayeen's Housing
-                        </Link>
-                    </Typography>
-                    <NavMenu></NavMenu>
-                </Toolbar>
-            </AppBar>
-        </Box>
+        <header className="header-section">
+            <Box sx={{ flexGrow: 1 }}>
+                <AppBar position="static" sx={{ backgroundColor: '#FFFFFF' }}>
+                    <Toolbar>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            aria-label="menu"
+                            sx={{ mr: 2, color: '#F95733' }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                            <Link to='/'>
+                                Jayeen's Housing
+                            </Link>
+                        </Typography>
+                        <NavMenu></NavMenu>
+                    </Toolbar>
+                </AppBar>
+            </Box>
+        </header>
     );
 };
 

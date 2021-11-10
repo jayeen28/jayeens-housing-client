@@ -13,8 +13,9 @@ const NavMenu = () => {
                 {
                     user.email ?
                         <>
+                            <Link to='/dashboard'> Dashborad</Link>
                             <span style={{ color: 'black' }}> {user.displayName}</span>
-                            <Button onClick={userSignout}>Sign out</Button>
+                            <Button onClick={userSignout} sx={{ color: 'black' }}>Sign out</Button>
                         </>
                         :
                         <Link to='/signin'> Sign In</Link>

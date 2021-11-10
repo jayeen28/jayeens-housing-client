@@ -3,6 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
+import Header from '../Shared/Header/Header';
 
 const SignIn = () => {
     const { userSignin } = useAuth();
@@ -16,17 +17,20 @@ const SignIn = () => {
         reset();
     }
     return (
-        <Container>
-            This is sign in page
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <TextField id="outlined-basic" label="Your email" {...register('userEmail')} variant="outlined" />
-                <TextField id="outlined-basic" label="Your password" {...register('userPass')} variant="outlined" />
-                <Button type="submit" variant="contained">Contained</Button>
-            </form>
-            <Typography>
-                New here? please <Link to='/signup'>Sign Up</Link>
-            </Typography>
-        </Container>
+        <div className="signin-page">
+            <Header />
+            <Container>
+                This is sign in page
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <TextField id="outlined-basic" label="Your email" {...register('userEmail')} variant="outlined" />
+                    <TextField id="outlined-basic" label="Your password" {...register('userPass')} variant="outlined" />
+                    <Button type="submit" variant="contained">Contained</Button>
+                </form>
+                <Typography>
+                    New here? please <Link to='/signup'>Sign Up</Link>
+                </Typography>
+            </Container>
+        </div>
     );
 };
 

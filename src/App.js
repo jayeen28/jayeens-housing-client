@@ -3,9 +3,9 @@ import './App.css';
 import AuthProvider from './Components/Context/AuthProvider';
 import Apartments from './Components/Pages/Apartments/Apartments';
 import BookApartment from './Components/Pages/BookApartment/BookApartment';
+import Dashboard from './Components/Pages/Dashboard/Dashboard';
 import Home from './Components/Pages/Home/Home';
 import Footer from './Components/Pages/Shared/Footer/Footer';
-import Header from './Components/Pages/Shared/Header/Header';
 import SignIn from './Components/Pages/SignIn/SignIn';
 import SignUp from './Components/Pages/SignUp/SignUp';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
@@ -15,7 +15,6 @@ function App() {
     <div className="App">
       <AuthProvider>
         <Router>
-          <Header />
           <Switch>
             <Route exact path="/">
               <Home />
@@ -34,6 +33,9 @@ function App() {
             </Route>
             <PrivateRoute path="/apartment/book/:id">
               <BookApartment />
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+              <Dashboard />
             </PrivateRoute>
           </Switch>
           <Footer />
