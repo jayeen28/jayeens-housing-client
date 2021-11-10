@@ -2,12 +2,15 @@ import { Button, Container, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 
 const SignUp = () => {
+    const { userSignup } = useAuth()
     const { handleSubmit, register, reset } = useForm();
 
     const onSubmit = data => {
-        console.log(data)
+        const { userEmail, userPass } = data;
+        userSignup(userEmail, userPass)
         reset();
     }
     return (
