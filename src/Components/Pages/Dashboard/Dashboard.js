@@ -6,24 +6,22 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import NavMenu from '../Shared/Header/NavMenu/NavMenu';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCreditCard, faSignOutAlt, faStarHalfAlt, faStoreAlt } from '@fortawesome/free-solid-svg-icons';
-import { Button } from '@mui/material';
+import CustomerNav from './SideNav/CustomerNav/CustomerNav';
+import CustomerRoutes from './NestedRoutes/CustomerRoutes/CustomerRoutes';
+import { Button, List, ListItem, ListItemIcon } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useAuth from '../../Hooks/useAuth';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
-    const { window } = props;
     const { userSignout } = useAuth();
+    const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
@@ -31,28 +29,13 @@ function Dashboard(props) {
     };
 
     const drawer = (
+        //SIEBAR NAV
         <div>
             <Toolbar />
             <Divider />
+            <CustomerNav />
+            <Divider />
             <List>
-                <ListItem>
-                    <ListItemIcon>
-                        <FontAwesomeIcon icon={faStoreAlt} />
-                    </ListItemIcon>
-                    <Link to='/'>My Bookings</Link>
-                </ListItem>
-                <ListItem>
-                    <ListItemIcon>
-                        <FontAwesomeIcon icon={faCreditCard} />
-                    </ListItemIcon>
-                    <Link to='/'>Pay</Link>
-                </ListItem>
-                <ListItem>
-                    <ListItemIcon>
-                        <FontAwesomeIcon icon={faStarHalfAlt} />
-                    </ListItemIcon>
-                    <Link to='/'>Review</Link>
-                </ListItem>
                 <ListItem>
                     <ListItemIcon>
                         <FontAwesomeIcon icon={faSignOutAlt} />
@@ -61,6 +44,7 @@ function Dashboard(props) {
                 </ListItem>
             </List>
         </div>
+        //
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
@@ -75,7 +59,7 @@ function Dashboard(props) {
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
-                <Toolbar sx={{ justifyContent: 'flex-end' }}>
+                <Toolbar>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -125,43 +109,18 @@ function Dashboard(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-                    enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-                    imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-                    Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-                    Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-                    nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-                    leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-                    feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-                    consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-                    sapien faucibus et molestie ac.
-                </Typography>
-                <Typography paragraph>
-                    Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-                    eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-                    neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-                    tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-                    sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-                    tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-                    gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-                    et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-                    tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-                    eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-                    posuere sollicitudin aliquam ultrices sagittis orci a.
-                </Typography>
+
+                {/* DASHBOARD BODY */}
+                <Box>
+                    <CustomerRoutes />
+                </Box>
+                {/* // */}
             </Box>
         </Box>
     );
 }
 
 Dashboard.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
     window: PropTypes.func,
 };
 
