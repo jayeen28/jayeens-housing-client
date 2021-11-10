@@ -8,6 +8,7 @@ import Footer from './Components/Pages/Shared/Footer/Footer';
 import Header from './Components/Pages/Shared/Header/Header';
 import SignIn from './Components/Pages/SignIn/SignIn';
 import SignUp from './Components/Pages/SignUp/SignUp';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -31,9 +32,9 @@ function App() {
             <Route path="/signup">
               <SignUp />
             </Route>
-            <Route path="/apartment/book/:id">
+            <PrivateRoute path="/apartment/book/:id">
               <BookApartment />
-            </Route>
+            </PrivateRoute>
           </Switch>
           <Footer />
         </Router>
