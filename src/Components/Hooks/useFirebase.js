@@ -1,6 +1,6 @@
 import initializeAuthentication from "../Firebase/firebase.init";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
 
 //INITIALIZE AUTHENTICATION
 initializeAuthentication();
@@ -22,6 +22,19 @@ const useFirebase = () => {
             .then(res => setuser(res.user))
             .catch(error => seterror(error.message));
     }
+
+    //USER OBSERVER 
+    useEffect(() => {
+        const unsubscribed = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setuser(user)
+            }
+            else {
+                setuser({})
+            }
+            return () => unsubscribed;
+        })
+    }, [])
     console.log(user)
     return {
         userSignup,
