@@ -7,6 +7,7 @@ initializeAuthentication();
 const useFirebase = () => {
     const [user, setuser] = useState({});
     const [error, seterror] = useState('');
+    const [isLoading, setisLoading] = useState(true);
     const auth = getAuth();
 
     //SIGN UP USER 
@@ -27,10 +28,15 @@ const useFirebase = () => {
             .catch(error => seterror(error.message))
     }
     //SIGN IN USER
-    const userSignin = (email, passoword) => {
+    const userSignin = (email, passoword, history, redirect_uri) => {
+        setisLoading(true);
         signInWithEmailAndPassword(auth, email, passoword)
-            .then(res => setuser(res.user))
-            .catch(error => seterror(error.message));
+            .then(res => {
+                setuser(res.user);
+                history.push(redirect_uri);
+            })
+            .catch(error => seterror(error.message))
+            .finally(setisLoading(false));
     }
 
     //USER SIGN OUT
@@ -43,12 +49,14 @@ const useFirebase = () => {
     //USER OBSERVER 
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
+            setisLoading(true);
             if (user) {
                 setuser(user)
             }
             else {
                 setuser({})
             }
+            setisLoading(false)
             return () => unsubscribed;
         })
     }, [auth])
@@ -58,6 +66,7 @@ const useFirebase = () => {
         userSignout,
         user,
         error,
+        isLoading
     }
 }
 export default useFirebase;

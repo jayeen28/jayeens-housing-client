@@ -1,16 +1,18 @@
 import { Button, Container, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 
 const SignIn = () => {
     const { userSignin } = useAuth();
     const { handleSubmit, register, reset } = useForm();
-
+    const history = useHistory();
+    const location = useLocation();
+    const redirect_uri = location.state?.from;
     const onSubmit = data => {
         const { userEmail, userPass } = data;
-        userSignin(userEmail, userPass);
+        userSignin(userEmail, userPass, history, redirect_uri);
         reset();
     }
     return (
