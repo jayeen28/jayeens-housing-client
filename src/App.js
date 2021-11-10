@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import AuthProvider from './Components/Context/AuthProvider';
 import Explore from './Components/Pages/Explore/Explore';
 import Home from './Components/Pages/Home/Home';
 import Footer from './Components/Pages/Shared/Footer/Footer';
@@ -10,27 +11,29 @@ import SignUp from './Components/Pages/SignUp/SignUp';
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/explore">
-            <Explore />
-          </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/signup">
-            <SignUp />
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/explore">
+              <Explore />
+            </Route>
+            <Route path="/signin">
+              <SignIn />
+            </Route>
+            <Route path="/signup">
+              <SignUp />
+            </Route>
+          </Switch>
+          <Footer />
+        </Router>
+      </AuthProvider>
     </div>
   );
 }

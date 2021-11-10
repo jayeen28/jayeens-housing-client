@@ -5,7 +5,7 @@ import ApartmentBox from '../../Shared/ApartmentBox/ApartmentBox';
 const HomeApartments = () => {
     const [apartments, setaparments] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/apartments')
+        fetch('https://obscure-refuge-52189.herokuapp.com/apartments')
             .then(res => res.json())
             .then(data => setaparments(data))
     }, [])
