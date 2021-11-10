@@ -11,7 +11,11 @@ const NavMenu = () => {
             <Typography>
                 <Link to='/explore'>Explore</Link>
                 {
-                    user.email ? <Button onClick={userSignout}>Sign out</Button>
+                    user.email ?
+                        <>
+                            <span style={{ color: 'black' }}> {user.displayName}</span>
+                            <Button onClick={userSignout}>Sign out</Button>
+                        </>
                         :
                         <Link to='/signin'> Sign In</Link>
                 }

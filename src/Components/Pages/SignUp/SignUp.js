@@ -9,8 +9,8 @@ const SignUp = () => {
     const { handleSubmit, register, reset } = useForm();
 
     const onSubmit = data => {
-        const { userEmail, userPass } = data;
-        userSignup(userEmail, userPass)
+        const { userName, userEmail, userPass } = data;
+        userSignup(userEmail, userPass, userName)
         reset();
     }
     return (
