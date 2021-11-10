@@ -8,6 +8,7 @@ const NavMenu = () => {
         <Box>
             <Typography>
                 <Link to='/explore'>Explore</Link>
+                <Link to='/signin'> Sign In</Link>
             </Typography>
         </Box>
     );

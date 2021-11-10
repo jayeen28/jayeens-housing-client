@@ -4,6 +4,8 @@ import Explore from './Components/Pages/Explore/Explore';
 import Home from './Components/Pages/Home/Home';
 import Footer from './Components/Pages/Shared/Footer/Footer';
 import Header from './Components/Pages/Shared/Header/Header';
+import SignIn from './Components/Pages/SignIn/SignIn';
+import SignUp from './Components/Pages/SignUp/SignUp';
 
 function App() {
   return (
@@ -14,11 +16,17 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/home">
+          <Route path="/home">
             <Home />
           </Route>
-          <Route exact path="/explore">
+          <Route path="/explore">
             <Explore />
+          </Route>
+          <Route path="/signin">
+            <SignIn />
+          </Route>
+          <Route path="/signup">
+            <SignUp />
           </Route>
         </Switch>
         <Footer />
