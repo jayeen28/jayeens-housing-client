@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import Apartments from './Components/Apartments/Apartments';
 import AuthProvider from './Components/Context/AuthProvider';
+import Apartments from './Components/Pages/Apartments/Apartments';
 import BookApartment from './Components/Pages/BookApartment/BookApartment';
 import Home from './Components/Pages/Home/Home';
 import Footer from './Components/Pages/Shared/Footer/Footer';

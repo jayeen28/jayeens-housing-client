@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Grid } from '@mui/material';
-import ApartmentBox from '../Pages/Shared/ApartmentBox/ApartmentBox';
+import ApartmentBox from '../Shared/ApartmentBox/ApartmentBox';
 
 const Apartments = () => {
     const [apartments, setapartments] = useState([]);
