@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ApartmentBox from '../../Shared/ApartmentBox/ApartmentBox';
 
 const HomeApartments = () => {
-    const [apartments, setaparments] = useState(null);
+    const [apartments, setaparments] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/apartments')
             .then(res => res.json())
@@ -18,7 +18,7 @@ const HomeApartments = () => {
                 <div className="aprtments-boxes">
                     <Grid container spacing={12}>
                         {
-                            apartments?.map(aprt => <ApartmentBox key={aprt._id} apartment={aprt} />)
+                            apartments?.slice(0, 6).map(aprt => <ApartmentBox key={aprt._id} apartment={aprt} />)
                         }
                     </Grid>
                 </div>

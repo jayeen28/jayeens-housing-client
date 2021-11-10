@@ -7,7 +7,7 @@ const NavMenu = () => {
     return (
         <Box>
             <Typography>
-                <Link to='/'>Home</Link>
+                <Link to='/explore'>Explore</Link>
             </Typography>
         </Box>
     );
