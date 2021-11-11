@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import CustomerNav from './SideNav/CustomerNav/CustomerNav';
 import CustomerRoutes from './NestedRoutes/CustomerRoutes/CustomerRoutes';
-import { Button, CircularProgress, List, ListItem, ListItemIcon, Typography } from '@mui/material';
+import { Button, List, ListItem, ListItemIcon, Typography } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useAuth from '../../Hooks/useAuth';
 import { faAngleDoubleLeft, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +23,6 @@ function Dashboard(props) {
     const { user, userSignout } = useAuth();
     const [currentUser, setcurrentUser] = React.useState({});
     const { window } = props;
-    const [isloading, setisloading] = React.useState(true);
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
@@ -35,7 +34,6 @@ function Dashboard(props) {
         fetch(`https://obscure-refuge-52189.herokuapp.com/users?uid=${user.uid}`)
             .then(res => res.json())
             .then(data => setcurrentUser(data))
-        setisloading(false);
     }, [user])
 
     const drawer = (
