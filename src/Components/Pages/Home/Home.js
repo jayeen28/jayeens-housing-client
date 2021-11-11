@@ -11,11 +11,9 @@ const Home = () => {
                 <Header />
             </div>
             <main className="home-page">
-                <div className="banner-section">
-                    <Banner />
-                    <HomeApartments />
-                    <HomeReviews />
-                </div>
+                <Banner />
+                <HomeApartments />
+                <HomeReviews />
             </main>
         </div>
     );
