@@ -3,6 +3,7 @@ import Header from '../Shared/Header/Header';
 import Banner from './Banner/Banner';
 import './Home.css';
 import HomeApartments from './HomeApartments/HomeApartments';
+import HomeReviews from './HomeReviews/HomeReviews';
 const Home = () => {
     return (
         <div className="home-page">
@@ -13,6 +14,7 @@ const Home = () => {
                 <div className="banner-section">
                     <Banner />
                     <HomeApartments />
+                    <HomeReviews />
                 </div>
             </main>
         </div>
