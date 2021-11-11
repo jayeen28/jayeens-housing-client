@@ -6,7 +6,7 @@ const ManageAllBookings = () => {
     const [allBookings, setallBookings] = useState([]);
     const [isloading, setisloading] = useState(true);
     useEffect(() => {
-        fetch('http://localhost:5000/bookedapartments')
+        fetch('https://obscure-refuge-52189.herokuapp.com/bookedapartments')
             .then(res => res.json())
             .then(data => {
                 setallBookings(data);

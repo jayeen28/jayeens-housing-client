@@ -4,7 +4,7 @@ import React from 'react';
 const ApartmentBox = ({ apartmentData }) => {
     const { _id, name, img, description, price } = apartmentData;
     const deleteBook = () => {
-        fetch(`http://localhost:5000/bookedapartments/delete?id=${_id}`, {
+        fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments/delete?id=${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

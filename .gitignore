@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 tempo.json
-
+requirement.txt
 # testing
 /coverage
 

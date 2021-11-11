@@ -6,7 +6,7 @@ const ManageApartments = () => {
     const [apartments, setapartments] = useState([]);
     const [isloading, setisloading] = useState(true);
     useEffect(() => {
-        fetch('http://localhost:5000/apartments')
+        fetch('https://obscure-refuge-52189.herokuapp.com/apartments')
             .then(res => res.json())
             .then(data => {
                 setapartments(data);
