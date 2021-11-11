@@ -1,42 +1,32 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
-import { Button, List, ListItem, ListItemIcon } from '@mui/material';
+import { List, ListItem } from '@mui/material';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../../../Hooks/useAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+
 const DrawerNav = () => {
     const { user, userSignout } = useAuth();
     return (
         <List>
             <ListItem>
-                <ListItemIcon>
-                    <FontAwesomeIcon icon={faAngleDoubleLeft} />
-                </ListItemIcon>
-                <Link to='/apartments'>Apartments</Link>
+                <Link to='/apartments' className="jbutton">Apartments</Link>
             </ListItem>
             {
                 user.email ?
                     <>
                         <ListItem>
-                            <ListItemIcon>
-                                <FontAwesomeIcon icon={faAngleDoubleLeft} />
-                            </ListItemIcon>
-                            <Link to='/dashboard'>Dashboard</Link>
+                            <Link to='/dashboard' className="jbutton">Dashboard</Link>
                         </ListItem>
-                        <span style={{ color: 'black' }}> {user.displayName}</span>
                         <ListItem>
-                            <ListItemIcon>
-                                <FontAwesomeIcon icon={faAngleDoubleLeft} />
-                            </ListItemIcon>
-                            <Button onClick={userSignout} sx={{ color: 'black' }}>Sign out</Button>
+                            <button onClick={userSignout} className="jbutton">
+                                <FontAwesomeIcon icon={faSignOutAlt} /> Sign out
+                            </button>
                         </ListItem>
                     </>
                     :
                     <ListItem>
-                        <ListItemIcon>
-                            <FontAwesomeIcon icon={faAngleDoubleLeft} />
-                        </ListItemIcon>
-                        <Link to='/signin'> Sign In</Link>
+                        <Link to='/signin' className="jbutton"><FontAwesomeIcon icon={faSignInAlt} /> Sign In</Link>
                     </ListItem>
             }
         </List>

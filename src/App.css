@@ -17,4 +17,10 @@ a,button{
     font-family: poppins;
     border: none
 }
+
+@media only screen and (max-width:600px){
+    .jbutton{
+        font-size: 13px;
+    }
+}
 /* #F75676 */
