@@ -13,6 +13,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useAuth from '../../Hooks/useAuth';
 import { faAngleDoubleLeft, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import AdminNav from './SideNav/AdminNav/AdminNav';
+import AdminRoutes from './NestedRoutes/AdminRoutes/AdminRoutes';
 
 
 const drawerWidth = 240;
@@ -44,7 +46,7 @@ function Dashboard(props) {
                     <Link to='/'>Back to home</Link>
                 </ListItem>
             </List>
-            <CustomerNav />
+            <AdminNav />
             <Divider />
             <List>
                 <ListItem>
@@ -112,7 +114,7 @@ function Dashboard(props) {
 
                 {/* DASHBOARD BODY */}
                 <Box>
-                    <CustomerRoutes />
+                    <AdminRoutes />
                 </Box>
                 {/* // */}
             </Box>
