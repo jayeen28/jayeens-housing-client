@@ -13,7 +13,7 @@ const useFirebase = () => {
     //SEND USER DATA TO DATABASE
     const setCustomerToDb = (user) => {
         const { uid, displayName, email } = user;
-        fetch(' https://obscure-refuge-52189.herokuapp.com/customers', {
+        fetch(' https://obscure-refuge-52189.herokuapp.com/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -23,7 +23,7 @@ const BookApartment = () => {
 
     //GET CUSTOMER DATA
     useEffect(() => {
-        fetch(` https://obscure-refuge-52189.herokuapp.com/customers?uid=${user.uid}`)
+        fetch(` https://obscure-refuge-52189.herokuapp.com/users?uid=${user.uid}`)
             .then(res => res.json())
             .then(data => {
                 setcustomerData(data);
@@ -49,7 +49,7 @@ const BookApartment = () => {
         //SEND CUSTOMER INFO TO DATABSE
         customerData.address = data.customerAddress
         customerData.phone = data.customerPhone;
-        fetch(' https://obscure-refuge-52189.herokuapp.com/customers', {
+        fetch('https://obscure-refuge-52189.herokuapp.com/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -7,7 +7,7 @@ const MyBookings = () => {
     const { user } = useAuth();
     const [bookedApartments, setbookedApartments] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/apartments/find?uid=${user.uid}`)
+        fetch(`https://obscure-refuge-52189.herokuapp.com/apartments/find?uid=${user.uid}`)
             .then(res => res.json())
             .then(data => setbookedApartments(data))
     }, [user.uid])
