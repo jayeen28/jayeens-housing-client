@@ -1,6 +1,7 @@
 import { Container, Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ApartmentBox from '../../Shared/ApartmentBox/ApartmentBox';
+import './HomeApartments.css';
 
 const HomeApartments = () => {
     const [apartments, setaparments] = useState([]);
@@ -12,8 +13,8 @@ const HomeApartments = () => {
     return (
         <section className="home-apartments">
             <Container>
-                <div className="home-aprtments-head">
-                    <h1>Your apartments</h1>
+                <div className="home-aprtments-head" style={{ textAlign: 'center' }}>
+                    <h1>Our Popular apartments</h1>
                 </div>
                 <div className="aprtments-boxes">
                     <Grid container spacing={12}>

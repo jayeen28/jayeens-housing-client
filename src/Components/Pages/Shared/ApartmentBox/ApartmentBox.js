@@ -11,7 +11,7 @@ const ApartmentBox = ({ apartment }) => {
     const { _id, name, description, img, price } = apartment;
     return (
         <Grid item xs={12} sm={12} md={4} lg={4}>
-            <Card>
+            <Card sx={{ border: '1px solid #F75676', borderRadius: '15px', padding: '5px' }}>
                 <CardMedia
                     component="img"
                     height="140"
@@ -28,7 +28,7 @@ const ApartmentBox = ({ apartment }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Link to={`/apartment/book/${_id}`}>Book</Link>
+                    <Link to={`/apartment/book/${_id}`} className="jbutton">Book</Link>
                 </CardActions>
             </Card>
         </Grid>
