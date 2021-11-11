@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import CustomerNav from './SideNav/CustomerNav/CustomerNav';
 import CustomerRoutes from './NestedRoutes/CustomerRoutes/CustomerRoutes';
-import { Button, List, ListItem, ListItemIcon, Typography } from '@mui/material';
+import { Button, CircularProgress, List, ListItem, ListItemIcon, Typography } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useAuth from '../../Hooks/useAuth';
 import { faAngleDoubleLeft, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -20,12 +20,23 @@ import AdminRoutes from './NestedRoutes/AdminRoutes/AdminRoutes';
 const drawerWidth = 240;
 
 function Dashboard(props) {
-    const { userSignout } = useAuth();
+    const { user, userSignout } = useAuth();
+    const [currentUser, setcurrentUser] = React.useState({});
     const { window } = props;
+    const [isloading, setisloading] = React.useState(true);
     const [mobileOpen, setMobileOpen] = React.useState(false);
+
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+
+    //CHECK IF THE USER ADMIN OR NOT
+    React.useEffect(() => {
+        fetch(`https://obscure-refuge-52189.herokuapp.com/users?uid=${user.uid}`)
+            .then(res => res.json())
+            .then(data => setcurrentUser(data))
+        setisloading(false);
+    }, [user])
 
     const drawer = (
         //SIEBAR NAV
@@ -46,7 +57,9 @@ function Dashboard(props) {
                     <Link to='/'>Back to home</Link>
                 </ListItem>
             </List>
-            <AdminNav />
+            {
+                currentUser.role === 'admin' ? <AdminNav /> : <CustomerNav />
+            }
             <Divider />
             <List>
                 <ListItem>
@@ -114,7 +127,9 @@ function Dashboard(props) {
 
                 {/* DASHBOARD BODY */}
                 <Box>
-                    <AdminRoutes />
+                    {
+                        currentUser.role === 'admin' ? <AdminRoutes /> : <CustomerRoutes />
+                    }
                 </Box>
                 {/* // */}
             </Box>

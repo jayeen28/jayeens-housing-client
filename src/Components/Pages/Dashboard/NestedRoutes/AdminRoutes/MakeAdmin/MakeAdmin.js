@@ -5,7 +5,10 @@ import { useForm } from 'react-hook-form';
 const MakeAdmin = () => {
     const { handleSubmit, register } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        fetch(`http://localhost:5000/users/makeadmin?email=${data.adminEmail}`, {
+            method: 'PUT'
+        }).then(res => res.json())
+            .then(data => console.log(data))
     }
     return (
         <div>
