@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 const MakeAdmin = () => {
     const { handleSubmit, register } = useForm();
     const onSubmit = data => {
-        fetch(`http://localhost:5000/users/makeadmin?email=${data.adminEmail}`, {
+        fetch(`https://obscure-refuge-52189.herokuapp.com/users/makeadmin?email=${data.adminEmail}`, {
             method: 'PUT'
         }).then(res => res.json())
             .then(data => console.log(data))
