@@ -15,7 +15,7 @@ const useFirebase = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(res => {
                 updateUserName(userName);
-                setuser(res.user)
+                setuser(res.user);
             })
             .catch(error => seterror(error.message))
     }
@@ -46,12 +46,27 @@ const useFirebase = () => {
             .catch(error => seterror(error.message))
     }
 
+    //SEND USER DATA TO DATABASE
+    const setUserToDb = (user) => {
+        const { uid, displayName, email } = user;
+        fetch(' https://obscure-refuge-52189.herokuapp.com/customers', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ uid, displayName, email })
+        })
+            .then(res => res.json())
+            .then(data => console.log(data));
+    }
+
     //USER OBSERVER 
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             setisLoading(true);
             if (user) {
                 setuser(user)
+                setUserToDb(user);
             }
             else {
                 setuser({})

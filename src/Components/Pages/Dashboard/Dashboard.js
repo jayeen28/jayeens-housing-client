@@ -1,20 +1,18 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import NavMenu from '../Shared/Header/NavMenu/NavMenu';
 import CustomerNav from './SideNav/CustomerNav/CustomerNav';
 import CustomerRoutes from './NestedRoutes/CustomerRoutes/CustomerRoutes';
-import { Button, List, ListItem, ListItemIcon } from '@mui/material';
+import { Button, List, ListItem, ListItemIcon, Typography } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useAuth from '../../Hooks/useAuth';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDoubleLeft, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 
 const drawerWidth = 240;
@@ -23,7 +21,6 @@ function Dashboard(props) {
     const { userSignout } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
@@ -31,8 +28,22 @@ function Dashboard(props) {
     const drawer = (
         //SIEBAR NAV
         <div>
-            <Toolbar />
+            <Toolbar>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <Link to='/'>
+                        Jayeen's Housing
+                    </Link>
+                </Typography>
+            </Toolbar>
             <Divider />
+            <List>
+                <ListItem>
+                    <ListItemIcon>
+                        <FontAwesomeIcon icon={faAngleDoubleLeft} />
+                    </ListItemIcon>
+                    <Link to='/'>Back to home</Link>
+                </ListItem>
+            </List>
             <CustomerNav />
             <Divider />
             <List>
@@ -51,27 +62,17 @@ function Dashboard(props) {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
-            <AppBar
-                position="fixed"
-                sx={{
-                    width: { sm: `calc(100% - ${drawerWidth}px)` },
-                    ml: { sm: `${drawerWidth}px` },
-                }}
-            >
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        edge="start"
-                        onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <NavMenu></NavMenu>
-                </Toolbar>
-            </AppBar>
+            <Toolbar>
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={handleDrawerToggle}
+                    sx={{ mr: 2, display: { sm: 'none' } }}
+                >
+                    <MenuIcon />
+                </IconButton>
+            </Toolbar>
             <Box
                 component="nav"
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -108,7 +109,6 @@ function Dashboard(props) {
                 component="main"
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
-                <Toolbar />
 
                 {/* DASHBOARD BODY */}
                 <Box>
