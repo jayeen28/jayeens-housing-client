@@ -1,4 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+body{
+    background-color: #F7F9FF;
+    font-family: 'Poppins', sans-serif;
+}
 a,button{
     color:black;
     text-decoration: none;
 }
+.jbutton{
+    background-color: #F75676;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 15px;
+    color: white;
+    font-family: poppins;
+    border: none
+}
+/* #F75676 */

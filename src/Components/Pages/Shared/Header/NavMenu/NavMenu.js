@@ -1,26 +1,27 @@
-import { Button, Typography } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../../Hooks/useAuth';
+import './NavMenu.css';
 
 const NavMenu = ({ navItemContainer }) => {
-    const { user, userSignout } = useAuth();
+    const { user, userSignout, isLoading } = useAuth();
+    if (isLoading) { return <CircularProgress sx={{ color: '#F75676' }} /> }
     return (
         <Box className={navItemContainer}>
-            <Typography>
-                <Link to='/apartments'>Apartments</Link>
+            <div className="nav-btns">
+                <Link to='/apartments' className="jbutton">Apartments</Link>
                 {
                     user.email ?
                         <>
-                            <Link to='/dashboard'> Dashborad</Link>
-                            <span style={{ color: 'black' }}> {user.displayName}</span>
-                            <Button onClick={userSignout} sx={{ color: 'black' }}>Sign out</Button>
+                            <Link to='/dashboard' className="jbutton">Dashborad</Link>
+                            <button onClick={userSignout} className="jbutton">Sign out</button>
                         </>
                         :
-                        <Link to='/signin'> Sign In</Link>
+                        <Link to='/signin'>Sign In</Link>
                 }
-            </Typography>
+            </div>
         </Box>
     );
 };
