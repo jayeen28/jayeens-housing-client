@@ -4,10 +4,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../../Hooks/useAuth';
 
-const NavMenu = () => {
-    const { user, userSignout } = useAuth()
+const NavMenu = ({ navItemContainer }) => {
+    const { user, userSignout } = useAuth();
     return (
-        <Box>
+        <Box className={navItemContainer}>
             <Typography>
                 <Link to='/apartments'>Apartments</Link>
                 {
