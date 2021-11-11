@@ -2,10 +2,17 @@ import { Button, Grid } from '@mui/material';
 import React from 'react';
 
 const ApartmentBox = ({ apartmentData }) => {
-    const { _id, name, img, description, price } = apartmentData;
+    const { _id, name, img, description, price, bookstatus } = apartmentData;
     const deleteBook = () => {
         fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments/delete?id=${_id}`, {
             method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
+    const updateBookingStatus = () => {
+        fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments?id=${_id}`, {
+            method: 'PUT'
         })
             .then(res => res.json())
             .then(data => console.log(data))
@@ -19,9 +26,11 @@ const ApartmentBox = ({ apartmentData }) => {
             <Grid item lg={4}>
                 <p>{description}</p>
                 <h4>Price: {price}</h4>
+                <h4>Booking status:{bookstatus}</h4>
             </Grid>
             <Grid item lg={4}>
                 <Button onClick={deleteBook}>Cancel</Button>
+                <Button onClick={updateBookingStatus}>Approve</Button>
             </Grid>
         </Grid>
     );

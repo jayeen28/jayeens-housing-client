@@ -64,6 +64,7 @@ const BookApartment = () => {
         const bookedBy = user.uid;
         const bookingInfo = { bookingDate, bookingTime, bookedBy };
         apartmentData.bookingInfo = bookingInfo;
+        apartmentData.bookstatus = 'pending';
         fetch(' https://obscure-refuge-52189.herokuapp.com/apartment/book', {
             method: 'POST',
             headers: {
