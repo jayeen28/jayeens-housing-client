@@ -8,6 +8,7 @@ const MyBookingbox = ({ apartmentData }) => {
     const { bookingDate, bookingTime } = bookingInfo;
     const [readBtn, setreadBtn] = useState(true);
     const [descShow, setdescShow] = useState(description.slice(0, 297));
+
     const readMore = () => {
         const readBtnText = document.getElementById(`${_id}`)
         if (readBtn) {
@@ -23,11 +24,14 @@ const MyBookingbox = ({ apartmentData }) => {
     }
 
     const cancelBooking = () => {
-        fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments/delete?id=${_id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
+        const confirmRes = window.confirm("Are you sure that you want to cancel?");
+        if (confirmRes) {
+            fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments/delete?id=${_id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => console.log(data))
+        }
     }
     const theme = useTheme();
     const useStyle = makeStyles({
