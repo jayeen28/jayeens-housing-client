@@ -38,7 +38,7 @@ const Header = () => {
                             edge="start"
                             aria-label="menu"
                             onClick={() => setdrawerOpen(true)}
-                            sx={{ mr: 2, color: '#F95733' }}
+                            sx={{ mr: 2, color: '#3D777A' }}
                         >
                             <MenuIcon />
                         </IconButton>

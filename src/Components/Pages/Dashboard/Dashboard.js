@@ -10,8 +10,9 @@ import useAuth from '../../Hooks/useAuth';
 import AdminRoutes from './NestedRoutes/AdminRoutes/AdminRoutes';
 import SideNav from './SideNav/SideNav';
 import { AppBar, Typography } from '@mui/material';
+import './Dashboard.css'
 
-const drawerWidth = 240;
+const drawerWidth = 270;
 
 function Dashboard(props) {
     const { user } = useAuth();

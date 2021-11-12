@@ -1,6 +1,6 @@
 import React from 'react';
 import Divider from '@mui/material/Divider';
-import { Button, List, ListItem, ListItemIcon, Typography } from '@mui/material';
+import { List, ListItem, Typography } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleLeft, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -23,12 +23,7 @@ const SideNav = ({ isLoading, currentUser }) => {
             </Toolbar>
             <Divider />
             <List>
-                <ListItem>
-                    <ListItemIcon>
-                        <FontAwesomeIcon icon={faAngleDoubleLeft} />
-                    </ListItemIcon>
-                    <Link to='/'>Back to home</Link>
-                </ListItem>
+
             </List>
             {
                 currentUser._id ?
@@ -51,10 +46,10 @@ const SideNav = ({ isLoading, currentUser }) => {
             <Divider />
             <List>
                 <ListItem>
-                    <ListItemIcon>
-                        <FontAwesomeIcon icon={faSignOutAlt} />
-                    </ListItemIcon>
-                    <Button onClick={userSignout} sx={{ color: 'black' }}>Sign out</Button>
+                    <Link to='/' className="jbutton"><FontAwesomeIcon icon={faAngleDoubleLeft} /> Back to home</Link>
+                </ListItem>
+                <ListItem>
+                    <button onClick={userSignout} sx={{ color: 'black' }} className="jbutton"><FontAwesomeIcon icon={faSignOutAlt} /> Sign out</button>
                 </ListItem>
             </List>
         </div>

@@ -28,6 +28,7 @@ form.book-now-form {
 form.book-now-form>div{
     margin: 2% 5px;
 }
+
 @media only screen and (max-width:600px){
     .bookapartment-name h2{
         font-size: 22px;

@@ -1,6 +1,6 @@
 import { faEdit, faHotel, faHouseUser, faLaptopHouse } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { List, ListItem, ListItemIcon } from '@mui/material';
+import { List, ListItem } from '@mui/material';
 import React from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
 
@@ -9,28 +9,16 @@ const AdminNav = () => {
     return (
         <List>
             <ListItem>
-                <ListItemIcon>
-                    <FontAwesomeIcon icon={faEdit} />
-                </ListItemIcon>
-                <Link to={`${url}/manageallbookings`}>Mange All Bookings</Link>
+                <Link to={`${url}/manageallbookings`} className="jbutton"><FontAwesomeIcon icon={faEdit} /> Mange All Bookings</Link>
             </ListItem>
             <ListItem>
-                <ListItemIcon>
-                    <FontAwesomeIcon icon={faLaptopHouse} />
-                </ListItemIcon>
-                <Link to={`${url}/addapartment`}>Add Apartment</Link>
+                <Link to={`${url}/addapartment`} className="jbutton"><FontAwesomeIcon icon={faLaptopHouse} /> Add Apartment</Link>
             </ListItem>
             <ListItem>
-                <ListItemIcon>
-                    <FontAwesomeIcon icon={faHouseUser} />
-                </ListItemIcon>
-                <Link to={`${url}/makeadmin`}>Make Admin</Link>
+                <Link to={`${url}/makeadmin`} className="jbutton"><FontAwesomeIcon icon={faHouseUser} /> Make Admin</Link>
             </ListItem>
             <ListItem>
-                <ListItemIcon>
-                    <FontAwesomeIcon icon={faHotel} />
-                </ListItemIcon>
-                <Link to={`${url}/manageapartments`}>Mange Apartments</Link>
+                <Link to={`${url}/manageapartments`} className="jbutton"><FontAwesomeIcon icon={faHotel} /> Mange Apartments</Link>
             </ListItem>
         </List>
     );
