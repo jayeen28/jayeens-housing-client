@@ -1,5 +1,5 @@
-import { Button, Grid } from '@mui/material';
 import React from 'react';
+import { Button, Grid } from '@mui/material';
 
 const ApartmentBox = ({ apartmentData }) => {
     const { _id, name, img, description, price, bookstatus } = apartmentData;

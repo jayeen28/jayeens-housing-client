@@ -1,7 +1,7 @@
 import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../../Hooks/useAuth';
-import ApartmentBox from '../../RouteShared/ApartmentBox';
+import MyBookingbox from './MyBookingbox/MyBookingbox';
 
 const MyBookings = () => {
     const { user } = useAuth();
@@ -13,10 +13,10 @@ const MyBookings = () => {
     }, [user.uid])
     return (
         <Container>
-            <h2>My bookings</h2>
+            <h2 className="jsectionhead">My bookings</h2>
             <div className="apartment-boxes">
                 {
-                    bookedApartments.map(aprt => <ApartmentBox key={aprt._id} apartmentData={aprt} />)
+                    bookedApartments.map(aprt => <MyBookingbox key={aprt._id} apartmentData={aprt} />)
                 }
             </div>
         </Container>

@@ -28,7 +28,7 @@ const ReviewBox = ({ customerReview }) => {
                 </div>
                 <div className="review-description">
                     <p>
-                        {reviewShow}<button id={`${_id}`} onClick={() => readMore()}>Read more</button>
+                        {reviewShow + '...'}<button style={{ backgroundColor: '#3D777A', color: 'white' }} id={`${_id}`} onClick={() => readMore()}>Read more</button>
                     </p>
                 </div>
             </div>

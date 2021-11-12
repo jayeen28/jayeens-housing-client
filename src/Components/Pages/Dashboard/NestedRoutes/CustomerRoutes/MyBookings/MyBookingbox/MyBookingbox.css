@@ -1,0 +1,24 @@
+.bookingbox-left, .bookingbox-right {
+    padding: 12px;
+}
+.apt-name{
+    margin: 0px;
+}
+.apt-desc{
+    margin: 0px;
+}
+.booking-left-desc {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.apt-price{
+    margin: 0px;
+}
+.bookingbox-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 94%;
+}
