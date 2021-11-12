@@ -14,6 +14,9 @@
     justify-content: space-between;
     width: 100%;
 }
+.apt-status{
+    text-transform: capitalize;
+}
 .booking-left-desc>p{
     margin: 12px 0;
 }

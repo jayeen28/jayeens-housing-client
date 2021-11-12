@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { Grid, useTheme } from '@mui/material';
+import { CircularProgress, Grid, useTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import './ManageAllBookingBox.css';
 
 const ManageAllBookingBox = ({ bookingData }) => {
     const { _id, name, img, description, price, bookstatus, bookingInfo } = bookingData;
+    const [bookStat, setbookStat] = useState(bookstatus);
     const { bookingDate, bookingTime } = bookingInfo;
     const [readBtn, setreadBtn] = useState(true);
     const [descShow, setdescShow] = useState(description.slice(0, 297));
+    const [isLoading, setisLoading] = useState(false);
 
     const readMore = () => {
         const readBtnText = document.getElementById(`${_id}`)
@@ -35,11 +37,20 @@ const ManageAllBookingBox = ({ bookingData }) => {
         }
     }
     const updateBookingStatus = () => {
+        setisLoading(true);
         fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments?id=${_id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    setbookStat('approved');
+                }
+                else {
+                    alert('Something went wrong');
+                }
+                setisLoading(false);
+            })
     }
 
     const theme = useTheme();
@@ -82,11 +93,19 @@ const ManageAllBookingBox = ({ bookingData }) => {
 
                     <div className="booking-left-desc">
                         <p className="apt-bookedate"><span style={{ color: '#3D777A', fontWeight: 'bold' }}>Booked at: </span> {bookingDate + ' | ' + bookingTime}</p>
-                        <p className="apt-status"><span style={{ color: '#3D777A', fontWeight: 'bold' }}>Status: </span>{bookstatus}</p>
+                        <p className="apt-status"><span style={{ color: '#3D777A', fontWeight: 'bold' }}>Status: </span>{bookStat}</p>
                     </div>
                     <div className="manage-all-bookings-btn">
                         <button className="jbutton" onClick={deleteBook}>Delete</button>
-                        <button className="jbutton" onClick={updateBookingStatus}>Approve</button>
+                        <div>
+                            {bookStat === 'pending' &&
+                                <>
+                                    {isLoading && <CircularProgress sx={{ color: '#3D777A' }} size={26} />}
+                                    <button className="jbutton" onClick={updateBookingStatus}>Approve
+                                    </button>
+                                </>
+                            }
+                        </div>
                     </div>
                 </div>
             </Grid>
