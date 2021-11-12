@@ -3,7 +3,7 @@ import { CircularProgress, Grid, useTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import './ManageAllBookingBox.css';
 
-const ManageAllBookingBox = ({ bookingData }) => {
+const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
     const { _id, name, img, description, price, bookstatus, bookingInfo } = bookingData;
     const [bookStat, setbookStat] = useState(bookstatus);
     const { bookingDate, bookingTime } = bookingInfo;
@@ -27,13 +27,20 @@ const ManageAllBookingBox = ({ bookingData }) => {
 
 
     const deleteBook = () => {
-        const deleteRes = window.alert('Are you sure, you want to delete?')
+        const deleteRes = window.confirm('Are you sure, you want to delete?');
         if (deleteRes) {
             fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments/delete?id=${_id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
-                .then(data => console.log(data))
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        render ? setrender(false) : setrender(true);
+                    }
+                    else {
+                        alert('Something went wrong')
+                    }
+                })
         }
     }
     const updateBookingStatus = () => {

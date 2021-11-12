@@ -5,6 +5,7 @@ import ManageAllBookingBox from './ManageAllBookingBox/ManageAllBookingBox';
 const ManageAllBookings = () => {
     const [allBookings, setallBookings] = useState([]);
     const [isloading, setisloading] = useState(true);
+    const [render, setrender] = useState(false);
     useEffect(() => {
         fetch('https://obscure-refuge-52189.herokuapp.com/bookedapartments')
             .then(res => res.json())
@@ -12,7 +13,7 @@ const ManageAllBookings = () => {
                 setallBookings(data);
                 setisloading(false);
             })
-    }, [])
+    }, [render])
     return (
         <div>
             <h2 className="jsectionhead">Total {allBookings.length} Bookings</h2>
@@ -24,7 +25,7 @@ const ManageAllBookings = () => {
                     :
                     <>
                         {
-                            allBookings.map(aprt => <ManageAllBookingBox key={aprt._id} bookingData={aprt} />)
+                            allBookings.map(aprt => <ManageAllBookingBox key={aprt._id} bookingData={aprt} setrender={setrender} render={render} />)
                         }
                     </>
             }
