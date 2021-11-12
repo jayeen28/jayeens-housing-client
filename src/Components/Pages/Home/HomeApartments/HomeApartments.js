@@ -1,14 +1,18 @@
-import { Container, Grid } from '@mui/material';
+import { CircularProgress, Container, Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ApartmentBox from '../../Shared/ApartmentBox/ApartmentBox';
 import './HomeApartments.css';
 
 const HomeApartments = () => {
     const [apartments, setaparments] = useState([]);
+    const [isLaoding, setisLoading] = useState(true);
     useEffect(() => {
         fetch('https://obscure-refuge-52189.herokuapp.com/apartments')
             .then(res => res.json())
-            .then(data => setaparments(data))
+            .then(data => {
+                setaparments(data);
+                setisLoading(false);
+            })
     }, [])
     return (
         <section className="home-apartments">
@@ -17,11 +21,16 @@ const HomeApartments = () => {
                     <h1 className="jsectionhead">Our Popular apartments</h1>
                 </div>
                 <div className="aprtments-boxes">
-                    <Grid container spacing={12}>
-                        {
-                            apartments?.slice(0, 6).map(aprt => <ApartmentBox key={aprt._id} apartment={aprt} />)
-                        }
-                    </Grid>
+                    {
+                        isLaoding ?
+                            <div style={{ textAlign: 'center' }}><CircularProgress sx={{ color: '#8567FE' }} /></div>
+                            :
+                            <Grid container spacing={12}>
+                                {
+                                    apartments?.slice(0, 6).map(aprt => <ApartmentBox key={aprt._id} apartment={aprt} />)
+                                }
+                            </Grid>
+                    }
                 </div>
             </Container>
         </section>

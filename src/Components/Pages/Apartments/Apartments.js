@@ -1,27 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Grid } from '@mui/material';
+import { CircularProgress, Container, Grid } from '@mui/material';
 import ApartmentBox from '../Shared/ApartmentBox/ApartmentBox';
 import Header from '../Shared/Header/Header';
 
 const Apartments = () => {
     const [apartments, setapartments] = useState([]);
+    const [isLaoding, setisLoading] = useState(true);
     useEffect(() => {
         fetch('https://obscure-refuge-52189.herokuapp.com/apartments')
             .then(res => res.json())
-            .then(data => setapartments(data))
+            .then(data => {
+                setapartments(data);
+                setisLoading(false)
+            })
     }, [])
     return (
         <div className="explore-page">
             <Header />
             <Container>
                 <div className="explore-page-head">
-                    Explore more apartments
+                    <h1 className="jsectionhead">Explore more apartments</h1>
                 </div>
-                <Grid container spacing={12}>
-                    {
-                        apartments?.map(aprt => <ApartmentBox key={aprt._id} apartment={aprt} />)
-                    }
-                </Grid>
+                {
+                    isLaoding ?
+                        <div style={{ textAlign: 'center' }}><CircularProgress sx={{ color: '#8567FE' }} /></div>
+                        :
+                        <Grid container spacing={12}>
+                            {
+                                apartments?.map(aprt => <ApartmentBox key={aprt._id} apartment={aprt} />)
+                            }
+                        </Grid>
+                }
             </Container>
         </div>
     );
