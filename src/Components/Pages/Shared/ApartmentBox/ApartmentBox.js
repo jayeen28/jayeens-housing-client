@@ -29,7 +29,7 @@ const ApartmentBox = ({ apartment }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Link to={`/apartment/book/${_id}`} className="jbutton">Book</Link>
+                    <Link to={`/apartment/book/${_id}`} className="jbutton">Book now</Link>
                 </CardActions>
             </Card>
         </Grid>

@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 
 body{
-    background-color: #F7F9FF;
+    background-color: #ECF3F9;
     font-family: 'Poppins', sans-serif;
+    color: #323231;
 }
 a,button{
     color:black;
     text-decoration: none;
 }
 .jbutton{
-    background-color: #8567FE;
+    background-color: #3d777a;
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 15px;

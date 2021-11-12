@@ -20,7 +20,7 @@ const ReviewBox = ({ customerReview }) => {
         }
     }
     return (
-        <Grid xs={12} sm={12} md={4}>
+        <Grid item xs={12} sm={12} md={4}>
             <div className="reviewbox">
                 <div className="rbox-head">
                     <h4 style={{ fontStyle: 'italic', textTransform: 'capitalize' }}>{name}</h4>

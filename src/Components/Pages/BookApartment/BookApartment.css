@@ -1,0 +1,29 @@
+.bookapartment-name h2 {
+    font-size: 32px;
+    margin-top: 6px;
+    margin-bottom: 0px;
+}
+.bookapartment-desc p{
+    font-size: 18px;
+    letter-spacing: 0.4px;
+    word-spacing: 3px;
+}
+.bookapartment-price h5 {
+    font-size: 23px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+.bookapartment-img img{
+border-radius: 10px;
+}
+form.book-now-form label {
+    font-size: 18px;
+}
+form.book-now-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+form.book-now-form>div{
+    margin: 2% 5px;
+}

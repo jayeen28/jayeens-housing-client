@@ -9,6 +9,7 @@ import CustomerRoutes from './NestedRoutes/CustomerRoutes/CustomerRoutes';
 import useAuth from '../../Hooks/useAuth';
 import AdminRoutes from './NestedRoutes/AdminRoutes/AdminRoutes';
 import SideNav from './SideNav/SideNav';
+import { AppBar, Typography } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -39,17 +40,27 @@ function Dashboard(props) {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <Toolbar>
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    sx={{ mr: 2, display: { sm: 'none' } }}
-                >
-                    <MenuIcon />
-                </IconButton>
-            </Toolbar>
+            <AppBar position="fixed"
+                sx={{
+                    width: { sm: `calc(100% - ${drawerWidth}px)` },
+                    ml: { sm: `${drawerWidth}px` },
+                    backgroundColor: '#8567FE'
+                }}>
+                <Toolbar>
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        sx={{ mr: 2, display: { sm: 'none' } }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h5" noWrap component="div" sx={{ fontFamily: 'poppins' }}>
+                        Dashboard
+                    </Typography>
+                </Toolbar>
+            </AppBar>
             <Box
                 component="nav"
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -86,7 +97,7 @@ function Dashboard(props) {
                 component="main"
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
-
+                <Toolbar />
                 {/* DASHBOARD BODY */}
                 <Box>
                     {
