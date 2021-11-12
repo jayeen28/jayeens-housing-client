@@ -62,10 +62,13 @@ const BookApartmentForm = ({ isLoading, customerData, apartmentData }) => {
         <>
             {isLoading ?
                 <div className="spinner" style={{ textAlign: 'center' }}>
-                    <CircularProgress />
+                    <CircularProgress sx={{ color: '#3D777A' }} />
                 </div>
                 :
                 <div className="book-now-form-wrapper">
+                    <div className="bookapartment-name">
+                        <h2>Fill up your details</h2>
+                    </div>
                     <form onSubmit={handleSubmit(onSubmit)} className="book-now-form">
                         <TextField
                             label="Your name"

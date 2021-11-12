@@ -19,7 +19,7 @@ const ManageAllBookings = () => {
             {
                 isloading ?
                     <div style={{ textAlign: 'center' }}>
-                        <CircularProgress />
+                        <CircularProgress sx={{ color: '#3D777A' }} />
                     </div>
                     :
                     <>

@@ -23,7 +23,7 @@ const HomeApartments = () => {
                 <div className="aprtments-boxes">
                     {
                         isLaoding ?
-                            <div style={{ textAlign: 'center' }}><CircularProgress sx={{ color: '#8567FE' }} /></div>
+                            <div style={{ textAlign: 'center' }}><CircularProgress sx={{ color: '#3D777A' }} /></div>
                             :
                             <Grid container spacing={12}>
                                 {

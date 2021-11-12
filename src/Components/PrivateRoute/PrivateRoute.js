@@ -5,7 +5,7 @@ import useAuth from '../Hooks/useAuth';
 
 const PrivateRoute = ({ children, ...rest }) => {
     const { user, isLoading } = useAuth();
-    if (isLoading) { return <div className="spinner" style={{ textAlign: 'center' }}><CircularProgress /></div> }
+    if (isLoading) { return <div className="spinner" style={{ textAlign: 'center' }}><CircularProgress sx={{ color: '#3D777A' }} /></div> }
     return (
         <Route
             {...rest}

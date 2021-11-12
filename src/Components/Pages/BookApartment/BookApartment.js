@@ -40,7 +40,7 @@ const BookApartment = () => {
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                         <div className="bookapartment-info">
                             <div className="bookapartment-img">
-                                <img src={img} alt="bookapartmentIamge" />
+                                <img src={img} alt="bookapartmentIamge" style={{ width: '100%' }} />
                             </div>
                             <div className="bookapartment-name">
                                 <h2>{name}</h2>

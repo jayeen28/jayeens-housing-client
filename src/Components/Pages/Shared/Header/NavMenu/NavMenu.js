@@ -7,7 +7,7 @@ import './NavMenu.css';
 
 const NavMenu = ({ navItemContainer }) => {
     const { user, userSignout, isLoading } = useAuth();
-    if (isLoading) { return <CircularProgress sx={{ color: '#F75676' }} /> }
+    if (isLoading) { return <CircularProgress sx={{ color: '#3D777A' }} /> }
     return (
         <Box className={navItemContainer}>
             <div className="nav-btns">

@@ -34,7 +34,7 @@ const SideNav = ({ isLoading, currentUser }) => {
                 currentUser._id ?
                     <>
                         {
-                            isLoading ? <CircularProgress /> :
+                            isLoading ? <CircularProgress sx={{ color: '#3D777A' }} /> :
                                 <>
                                     {
                                         currentUser.role === 'admin' ? <AdminNav /> : <CustomerNav />
@@ -45,7 +45,7 @@ const SideNav = ({ isLoading, currentUser }) => {
                     </>
                     :
                     <div style={{ textAlign: 'center' }}>
-                        <CircularProgress sx={{ color: '#757575' }} />
+                        <CircularProgress sx={{ color: '#3D777A' }} />
                     </div>
             }
             <Divider />
