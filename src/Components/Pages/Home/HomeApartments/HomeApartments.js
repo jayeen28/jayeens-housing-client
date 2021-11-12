@@ -13,8 +13,8 @@ const HomeApartments = () => {
     return (
         <section className="home-apartments">
             <Container>
-                <div className="home-aprtments-head" style={{ textAlign: 'center' }}>
-                    <h1>Our Popular apartments</h1>
+                <div className="home-aprtments-head">
+                    <h1 className="jsectionhead">Our Popular apartments</h1>
                 </div>
                 <div className="aprtments-boxes">
                     <Grid container spacing={12}>

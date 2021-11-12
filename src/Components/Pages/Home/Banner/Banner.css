@@ -1,10 +1,27 @@
 .banner-section{
     padding-top: 1%;
-    padding-bottom: 4%;
+    padding-bottom: 6%;
+}
+.business-tagline{
+    padding-top: 30px;
 }
 .business-tagline>h1{
     font-size: 55px;
 }
 .business-tagline>a {
     font-size: 21px;
+}
+
+@media only screen and (max-width:600px){
+    .business-tagline>h1{
+        font-size: 30px;
+        text-align: center;
+    }
+    .business-tagline{
+        padding-top: 0px;
+        text-align: center;
+    }
+    .business-tagline>a {
+        font-size: 17px;
+    }
 }
