@@ -10,11 +10,11 @@ import { Link } from 'react-router-dom';
 const ApartmentBox = ({ apartment }) => {
     const { _id, name, description, img, price } = apartment;
     return (
-        <Grid item xs={12} sm={12} md={4} lg={4}>
+        <Grid item xs={12} sm={12} md={6}>
             <Card sx={{ boxShadow: '#00000070 0px 0px 8px', borderRadius: '15px', padding: '8px' }}>
                 <CardMedia
                     component="img"
-                    height="200"
+                    height="300"
                     image={img}
                     alt="green iguana"
                     sx={{ borderRadius: '10px' }}

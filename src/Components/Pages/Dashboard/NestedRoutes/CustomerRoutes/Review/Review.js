@@ -12,7 +12,7 @@ const Review = () => {
     setValue('name', `${user.displayName}`)
     const onSubmit = data => {
         data.reviewedBy = user.email;
-        data.raing = rating;
+        data.rating = rating;
         fetch('https://obscure-refuge-52189.herokuapp.com/reviews/add', {
             method: 'POST',
             headers: {

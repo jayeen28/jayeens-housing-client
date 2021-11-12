@@ -1,5 +1,7 @@
-import { Container } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import ReviewBox from './ReviewBox.js/ReviewBox';
+import './HomeReviews.css'
 
 const HomeReviews = () => {
     const [reviews, setreviews] = useState([]);
@@ -9,9 +11,18 @@ const HomeReviews = () => {
             .then(data => setreviews(data))
     }, [])
     return (
-        <Container>
-            <h2>Total reviews{reviews.length}</h2>
-        </Container>
+        <section className="reviews-section">
+            <Container>
+                <h2 className="jsectionhead">Reviews</h2>
+                <div className="review-boxes">
+                    <Grid container>
+                        {
+                            reviews.map(rvw => <ReviewBox key={rvw._id} customerReview={rvw} />)
+                        }
+                    </Grid>
+                </div>
+            </Container>
+        </section>
     );
 };
 
