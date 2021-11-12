@@ -1,6 +1,6 @@
 import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import ApartmentBox from '../../RouteShared/ApartmentBox';
+import ManageAllBookingBox from './ManageAllBookingBox/ManageAllBookingBox';
 
 const ManageAllBookings = () => {
     const [allBookings, setallBookings] = useState([]);
@@ -15,7 +15,7 @@ const ManageAllBookings = () => {
     }, [])
     return (
         <div>
-            <h2>We have total {allBookings.length} Bookings</h2>
+            <h2 className="jsectionhead">Total {allBookings.length} Bookings</h2>
             {
                 isloading ?
                     <div style={{ textAlign: 'center' }}>
@@ -24,7 +24,7 @@ const ManageAllBookings = () => {
                     :
                     <>
                         {
-                            allBookings.map(aprt => <ApartmentBox key={aprt._id} apartmentData={aprt} />)
+                            allBookings.map(aprt => <ManageAllBookingBox key={aprt._id} bookingData={aprt} />)
                         }
                     </>
             }

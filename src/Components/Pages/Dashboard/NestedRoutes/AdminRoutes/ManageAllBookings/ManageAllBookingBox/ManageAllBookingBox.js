@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Grid, useTheme } from '@mui/material';
-import './MyBookingbox.css';
 import { makeStyles } from '@mui/styles';
+import './ManageAllBookingBox.css';
 
-const MyBookingbox = ({ apartmentData }) => {
-    const { _id, name, img, description, price, bookstatus, bookingInfo } = apartmentData;
+const ManageAllBookingBox = ({ bookingData }) => {
+    const { _id, name, img, description, price, bookstatus, bookingInfo } = bookingData;
     const { bookingDate, bookingTime } = bookingInfo;
     const [readBtn, setreadBtn] = useState(true);
     const [descShow, setdescShow] = useState(description.slice(0, 297));
@@ -23,9 +23,10 @@ const MyBookingbox = ({ apartmentData }) => {
         }
     }
 
-    const cancelBooking = () => {
-        const confirmRes = window.confirm("Are you sure that you want to cancel?");
-        if (confirmRes) {
+
+    const deleteBook = () => {
+        const deleteRes = window.alert('Are you sure, you want to delete?')
+        if (deleteRes) {
             fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments/delete?id=${_id}`, {
                 method: 'DELETE'
             })
@@ -33,6 +34,14 @@ const MyBookingbox = ({ apartmentData }) => {
                 .then(data => console.log(data))
         }
     }
+    const updateBookingStatus = () => {
+        fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments?id=${_id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
+
     const theme = useTheme();
     const useStyle = makeStyles({
         myBookingMobile: {
@@ -75,12 +84,14 @@ const MyBookingbox = ({ apartmentData }) => {
                         <p className="apt-bookedate"><span style={{ color: '#3D777A', fontWeight: 'bold' }}>Booked at: </span> {bookingDate + ' | ' + bookingTime}</p>
                         <p className="apt-status"><span style={{ color: '#3D777A', fontWeight: 'bold' }}>Status: </span>{bookstatus}</p>
                     </div>
-
-                    <button className="jbutton" onClick={cancelBooking}>Cancel</button>
+                    <div className="manage-all-bookings-btn">
+                        <button className="jbutton" onClick={deleteBook}>Delete</button>
+                        <button className="jbutton" onClick={updateBookingStatus}>Approve</button>
+                    </div>
                 </div>
             </Grid>
         </Grid>
     );
 };
 
-export default MyBookingbox;
+export default ManageAllBookingBox;
