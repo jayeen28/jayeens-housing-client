@@ -1,11 +1,24 @@
 import { Grid, Rating } from '@mui/material';
 import React, { useState } from 'react';
 import './ReviewBox.css';
-import ReviewModal from './ReviewModal';
 
 const ReviewBox = ({ customerReview }) => {
-    const [open, setOpen] = useState(false);
-    const { name, review, rating } = customerReview;
+    const [readBtn, setreadBtn] = useState(true);
+    const { _id, name, review, rating } = customerReview;
+    const [reviewShow, setreviewShow] = useState(review.slice(0, 150));
+    const readMore = () => {
+        const readBtnText = document.getElementById(`${_id}`)
+        if (readBtn) {
+            setreviewShow(review);
+            setreadBtn(false);
+            readBtnText.innerText = 'read less'
+        }
+        else {
+            setreviewShow(review.slice(0, 150));
+            setreadBtn(true);
+            readBtnText.innerText = 'read more'
+        }
+    }
     return (
         <Grid xs={12} sm={12} md={4}>
             <div className="reviewbox">
@@ -15,10 +28,9 @@ const ReviewBox = ({ customerReview }) => {
                 </div>
                 <div className="review-description">
                     <p>
-                        {review.slice(0, 120)}<button onClick={() => { setOpen(true) }}>Read more</button>
+                        {reviewShow}<button id={`${_id}`} onClick={() => readMore()}>Read more</button>
                     </p>
                 </div>
-                <ReviewModal open={open} setOpen={setOpen} review={review} name={name} />
             </div>
         </Grid>
     );
