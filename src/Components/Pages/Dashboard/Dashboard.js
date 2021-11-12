@@ -96,15 +96,13 @@ function Dashboard(props) {
             </Box>
             <Box
                 component="main"
-                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+                sx={{ flexGrow: 1, p: 2, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
                 {/* DASHBOARD BODY */}
-                <Box>
-                    {
-                        currentUser.role === 'admin' ? <AdminRoutes /> : <CustomerRoutes />
-                    }
-                </Box>
+                {
+                    currentUser.role === 'admin' ? <AdminRoutes /> : <CustomerRoutes />
+                }
                 {/* // */}
             </Box>
         </Box>

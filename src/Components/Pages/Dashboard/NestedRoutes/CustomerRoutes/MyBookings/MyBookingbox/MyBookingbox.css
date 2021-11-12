@@ -1,5 +1,6 @@
 .bookingbox-left, .bookingbox-right {
-    padding: 12px;
+    padding: 2px 12px;
+    margin: 10px 0px;
 }
 .apt-name{
     margin: 0px;
@@ -11,6 +12,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+}
+.booking-left-desc>p{
+    margin: 12px 0;
 }
 .apt-price{
     margin: 0px;
@@ -20,5 +25,4 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
-    height: 94%;
 }
