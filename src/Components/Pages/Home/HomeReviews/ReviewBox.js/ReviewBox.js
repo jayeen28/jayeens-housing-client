@@ -3,20 +3,20 @@ import React, { useState } from 'react';
 import './ReviewBox.css';
 
 const ReviewBox = ({ customerReview }) => {
-    const [readBtn, setreadBtn] = useState(true);
     const { _id, name, review, rating } = customerReview;
+    const [readBtn, setreadBtn] = useState(true);
     const [reviewShow, setreviewShow] = useState(review.slice(0, 150));
     const readMore = () => {
         const readBtnText = document.getElementById(`${_id}`)
         if (readBtn) {
             setreviewShow(review);
             setreadBtn(false);
-            readBtnText.innerText = 'read less'
+            readBtnText.innerText = 'Read less'
         }
         else {
             setreviewShow(review.slice(0, 150));
             setreadBtn(true);
-            readBtnText.innerText = 'read more'
+            readBtnText.innerText = 'Read more'
         }
     }
     return (
@@ -27,9 +27,16 @@ const ReviewBox = ({ customerReview }) => {
                     <Rating name="read-only" value={rating} readOnly />
                 </div>
                 <div className="review-description">
-                    <p>
-                        {reviewShow + '...'}<button style={{ backgroundColor: '#3D777A', color: 'white' }} id={`${_id}`} onClick={() => readMore()}>Read more</button>
-                    </p>
+                    {
+                        review.length < 151 ?
+                            <p>
+                                {review}
+                            </p>
+                            :
+                            <p>
+                                {reviewShow + '...'}<button style={{ backgroundColor: '#3D777A', color: 'white' }} id={`${_id}`} onClick={() => readMore()}>Read more</button>
+                            </p>
+                    }
                 </div>
             </div>
         </Grid>
