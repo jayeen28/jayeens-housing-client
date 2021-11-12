@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
+import { Button, Rating } from '@mui/material';
 import useAuth from '../../../../../Hooks/useAuth';
+
 
 const Review = () => {
     const { user } = useAuth();
+    const [rating, setrating] = useState(0);
     const { register, handleSubmit, setValue } = useForm();
     setValue('name', `${user.displayName}`)
     const onSubmit = data => {
         data.reviewedBy = user.email;
+        data.raing = rating;
         fetch('https://obscure-refuge-52189.herokuapp.com/reviews/add', {
             method: 'POST',
             headers: {
@@ -32,6 +35,12 @@ const Review = () => {
                         {...register('review')}
                         multiline
                         required
+                    />
+                    <Rating
+                        name="simple-controlled"
+                        onChange={(event, newValue) => {
+                            setrating(newValue);
+                        }}
                     />
                     <Button type="submit" variant="contained">Post</Button>
                 </form>
