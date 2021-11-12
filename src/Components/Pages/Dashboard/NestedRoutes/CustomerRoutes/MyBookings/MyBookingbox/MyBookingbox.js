@@ -3,7 +3,7 @@ import { Grid, useTheme } from '@mui/material';
 import './MyBookingbox.css';
 import { makeStyles } from '@mui/styles';
 
-const MyBookingbox = ({ apartmentData }) => {
+const MyBookingbox = ({ apartmentData, render, setrender }) => {
     const { _id, name, img, description, price, bookstatus, bookingInfo } = apartmentData;
     const { bookingDate, bookingTime } = bookingInfo;
     const [readBtn, setreadBtn] = useState(true);
@@ -30,7 +30,14 @@ const MyBookingbox = ({ apartmentData }) => {
                 method: 'DELETE'
             })
                 .then(res => res.json())
-                .then(data => console.log(data))
+                .then(data => {
+                    if (data.deletedCount) {
+                        render ? setrender(false) : setrender(true);
+                    }
+                    else {
+                        alert('Something went wrong!')
+                    }
+                })
         }
     }
     const theme = useTheme();

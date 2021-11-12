@@ -7,6 +7,7 @@ const MyBookings = () => {
     const { user } = useAuth();
     const [bookedApartments, setbookedApartments] = useState([]);
     const [isLoading, setisLoading] = useState(true);
+    const [render, setrender] = useState(false);
     useEffect(() => {
         fetch(`https://obscure-refuge-52189.herokuapp.com/apartments/find?uid=${user.uid}`)
             .then(res => res.json())
@@ -14,11 +15,11 @@ const MyBookings = () => {
                 setbookedApartments(data);
                 setisLoading(false);
             })
-    }, [user.uid])
+    }, [user.uid, render])
     return (
         <div>
             <div className="my-booking-head">
-                <h2 className="jsectionhead">My bookings</h2>
+                <h2 className="jsectionhead">Your bookings</h2>
             </div>
             <div className="apartment-boxes">
                 {
@@ -27,7 +28,7 @@ const MyBookings = () => {
                             <CircularProgress sx={{ color: '#3D777A' }} />
                         </div>
                         :
-                        bookedApartments.map(aprt => <MyBookingbox key={aprt._id} apartmentData={aprt} />)
+                        bookedApartments.map(aprt => <MyBookingbox key={aprt._id} apartmentData={aprt} render={render} setrender={setrender} />)
                 }
             </div>
         </div>

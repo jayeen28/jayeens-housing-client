@@ -5,6 +5,7 @@ import MApartmentBox from './MApartmentBox/MApartmentBox';
 const ManageApartments = () => {
     const [apartments, setapartments] = useState([]);
     const [isloading, setisloading] = useState(true);
+    const [render, setrender] = useState(false);
     useEffect(() => {
         fetch('https://obscure-refuge-52189.herokuapp.com/apartments')
             .then(res => res.json())
@@ -12,10 +13,10 @@ const ManageApartments = () => {
                 setapartments(data);
                 setisloading(false);
             })
-    }, [])
+    }, [render]);
     return (
         <div>
-            <h2>Total apartments: {apartments.length}</h2>
+            <h2 className="jsectionhead">Total apartments: {apartments.length}</h2>
             <div className="apartment-boxes">
                 {
                     isloading ?
@@ -25,7 +26,8 @@ const ManageApartments = () => {
                         :
                         <Grid container spacing={3}>
                             {
-                                apartments.map(aprt => <MApartmentBox key={aprt._id} apartment={aprt} />)
+                                apartments.map(aprt => <MApartmentBox key={aprt._id} apartment={aprt}
+                                    render={render} setrender={setrender} />)
                             }
                         </Grid>
                 }
