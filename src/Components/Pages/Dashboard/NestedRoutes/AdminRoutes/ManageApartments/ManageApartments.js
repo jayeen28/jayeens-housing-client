@@ -16,7 +16,7 @@ const ManageApartments = () => {
     }, [render]);
     return (
         <div>
-            <h2 className="jsectionhead">Total apartments: {apartments.length}</h2>
+            <h2 className="jsectionhead">Manage apartments<small style={{ display: 'block', fontSize: '14px', color: '#1D6B6F' }}>Total {apartments.length} apartments</small></h2>
             <div className="apartment-boxes">
                 {
                     isloading ?
