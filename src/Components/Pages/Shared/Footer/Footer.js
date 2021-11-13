@@ -29,10 +29,10 @@ const Footer = () => {
                                 </p>
                             </div>
                             <div className="footer-icons">
-                                <FontAwesomeIcon icon={faEnvelope} />
-                                <FontAwesomeIcon icon={faFacebook} />
-                                <FontAwesomeIcon icon={faInstagram} />
-                                <FontAwesomeIcon icon={faTwitter} />
+                                <a href="mailto:jayeen6783@gmail.com" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faEnvelope} /></a>
+                                <a href="https://facebook.com/jayeen28" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faFacebook} /></a>
+                                <a href="https://instagram.com/jay__een/" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faInstagram} /></a>
+                                <a href="https://twitter.com/jayeen28" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faTwitter} /></a>
                             </div>
                         </div>
                     </Grid>

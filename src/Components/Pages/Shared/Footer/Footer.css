@@ -12,6 +12,8 @@ form.subscribe-form {
     display: flex;
     justify-content: space-between;
     width: 44%;
+}
+.footer-icons a{
     color: #1D6B6F;
 }
 .footer-description{
