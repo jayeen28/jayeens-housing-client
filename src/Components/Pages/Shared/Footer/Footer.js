@@ -5,6 +5,7 @@ import './Footer.css';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
+import footerbrand from '../../../../images/jayeens-housing-footer.png';
 
 const Footer = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -19,7 +20,7 @@ const Footer = () => {
                     <Grid item xs={12} sm={12} md={6}>
                         <div className="footer-left">
                             <div className="footer-logo">
-                                <h1>LOGO</h1>
+                                <img src={footerbrand} alt="FooterBrand" />
                             </div>
                             <div className="footer-description">
                                 <p>We have a lot of good property and one of that
