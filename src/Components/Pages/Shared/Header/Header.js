@@ -10,6 +10,7 @@ import NavMenu from './NavMenu/NavMenu';
 import { makeStyles } from '@mui/styles';
 import { Drawer, useTheme } from '@mui/material';
 import DrawerNav from './NavMenu/DrawerNav/DrawerNav';
+import jayeensHousing from '../../../../images/jayeens-housing.png';
 
 const Header = () => {
     const [drawerOpen, setdrawerOpen] = useState(false);
@@ -44,7 +45,7 @@ const Header = () => {
                         </IconButton>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             <Link to='/'>
-                                Jayeen's Housing
+                                <img src={jayeensHousing} alt="JayeensHousingBrand" />
                             </Link>
                         </Typography>
                         <NavMenu navItemContainer={navItemContainer}></NavMenu>
