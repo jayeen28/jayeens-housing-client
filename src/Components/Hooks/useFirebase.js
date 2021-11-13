@@ -32,6 +32,7 @@ const useFirebase = () => {
                 updateUserName(userName);
                 res.user.displayName = userName;
                 setCustomerToDb(res.user);
+                seterror('')
                 history.push('/');
             })
             .catch(error => seterror(error.message))
@@ -51,6 +52,7 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, email, passoword)
             .then(res => {
                 setuser(res.user);
+                seterror('');
                 history.push(redirect_uri);
             })
             .catch(error => seterror(error.message))

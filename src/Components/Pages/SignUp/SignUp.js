@@ -1,4 +1,4 @@
-import { Container, TextField } from '@mui/material';
+import { Alert, Container, TextField } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
@@ -8,7 +8,7 @@ import Header from '../Shared/Header/Header';
 import './SignUp.css';
 
 const SignUp = () => {
-    const { userSignup } = useAuth()
+    const { userSignup, error } = useAuth()
     const history = useHistory();
     const { handleSubmit, register, reset } = useForm();
 
@@ -26,6 +26,7 @@ const SignUp = () => {
                     <TextField type="text" label="Your name" {...register('userName')} variant="outlined" />
                     <TextField type="email" label="Your email" {...register('userEmail')} variant="outlined" />
                     <TextField type="password" label="Your password" {...register('userPass')} variant="outlined" />
+                    {error.length > 1 && <Alert severity="error">{error}</Alert>}
                     <button type="submit" className="jbutton">Contained</button>
                 </form>
                 <p style={{ textAlign: 'center' }}>
