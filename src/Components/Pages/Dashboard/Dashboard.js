@@ -45,7 +45,7 @@ function Dashboard(props) {
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
-                    backgroundColor: '#1d6b6f'
+                    backgroundColor: '#1D6B6F'
                 }}>
                 <Toolbar>
                     <IconButton
