@@ -9,6 +9,7 @@ import useAuth from '../../../Hooks/useAuth';
 import AdminNav from './AdminNav/AdminNav';
 import CustomerNav from './CustomerNav/CustomerNav';
 import { CircularProgress } from '@mui/material';
+import jayeensHousingBanner from '../../../../images/jayeens-housing-transparent.png';
 
 const SideNav = ({ isLoading, currentUser }) => {
     const { userSignout } = useAuth();
@@ -17,7 +18,7 @@ const SideNav = ({ isLoading, currentUser }) => {
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     <Link to='/'>
-                        Jayeen's Housing
+                        <img src={jayeensHousingBanner} alt="jayeenshousingbanner" style={{ width: '100%' }} />
                     </Link>
                 </Typography>
             </Toolbar>

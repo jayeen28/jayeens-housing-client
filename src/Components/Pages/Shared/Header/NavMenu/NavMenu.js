@@ -1,4 +1,4 @@
-import { faSignInAlt, faSignOutAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardCheck, faLaptopHouse, faSignInAlt, faSignOutAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
@@ -13,11 +13,11 @@ const NavMenu = ({ navItemContainer }) => {
     return (
         <Box className={navItemContainer}>
             <div className="nav-btns">
-                <Link to='/apartments' className="jbutton">Apartments</Link>
+                <Link to='/apartments' className="jbutton"><FontAwesomeIcon icon={faLaptopHouse} /> Apartments</Link>
                 {
                     user.email ?
                         <>
-                            <Link to='/dashboard' className="jbutton">Dashborad</Link>
+                            <Link to='/dashboard' className="jbutton"><FontAwesomeIcon icon={faClipboardCheck} /> Dashborad</Link>
                             <span className="jbutton"><FontAwesomeIcon icon={faUserAlt} /> {user.displayName}</span>
                             <button onClick={userSignout} className="jbutton"><FontAwesomeIcon icon={faSignOutAlt} /> Sign out</button>
                         </>
