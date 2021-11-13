@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
-import { Button, Rating } from '@mui/material';
+import { Rating } from '@mui/material';
 import useAuth from '../../../../../Hooks/useAuth';
-
+import './Review.css';
 
 const Review = () => {
     const { user } = useAuth();
@@ -21,13 +21,17 @@ const Review = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.acknowledged) {
+                    alert('Your review has been submitted')
+                }
+            })
     }
     return (
         <div>
-            Please give us a review
+            <h2 className="jsectionhead">Please give us a review</h2>
             <div className="add-review-form">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} className="review-form">
                     <TextField label="Your name" variant="outlined" {...register('name')} required />
                     <TextField
                         label="Your review"
@@ -36,13 +40,18 @@ const Review = () => {
                         multiline
                         required
                     />
-                    <Rating
-                        name="simple-controlled"
-                        onChange={(event, newValue) => {
-                            setrating(newValue);
-                        }}
-                    />
-                    <Button type="submit" variant="contained">Post</Button>
+                    <div className="rating-wrapper">
+                        <span className="rating-text-wrapper">
+                            <p className="rating-text">Experience?</p>
+                        </span>
+                        <Rating
+                            name="simple-controlled"
+                            onChange={(event, newValue) => {
+                                setrating(newValue);
+                            }}
+                        />
+                    </div>
+                    <button type="submit" className="jbutton">Post</button>
                 </form>
             </div>
         </div>
