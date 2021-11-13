@@ -12,7 +12,7 @@ import SideNav from './SideNav/SideNav';
 import { AppBar, Typography } from '@mui/material';
 import './Dashboard.css'
 
-const drawerWidth = 260;
+const drawerWidth = 268;
 
 function Dashboard(props) {
     const { user } = useAuth();
