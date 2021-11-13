@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CircularProgress, Grid, useTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import './ManageAllBookingBox.css';
 
 const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
     const { _id, name, img, description, price, bookstatus, bookingInfo } = bookingData;
+    const { bookingDate, bookingTime, bookedBy } = bookingInfo;
     const [bookStat, setbookStat] = useState(bookstatus);
-    const { bookingDate, bookingTime } = bookingInfo;
+    const [customerData, setcustomerData] = useState({});
+    const { email, phone } = customerData;
     const [readBtn, setreadBtn] = useState(true);
     const [descShow, setdescShow] = useState(description.slice(0, 297));
     const [isLoading, setisLoading] = useState(false);
+    const [customerinfoLoading, setcustomerinfoLoading] = useState(true);
 
     const readMore = () => {
         const readBtnText = document.getElementById(`${_id}`)
@@ -25,7 +28,17 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
         }
     }
 
+    //GET CUSTOMER INFO 
+    useEffect(() => {
+        fetch(`http://localhost:5000/users?uid=${bookedBy}`)
+            .then(res => res.json())
+            .then(data => {
+                setcustomerData(data);
+                setcustomerinfoLoading(false);
+            })
+    }, [bookedBy])
 
+    //DELETE BOOKING
     const deleteBook = () => {
         const deleteRes = window.confirm('Are you sure, you want to delete?');
         if (deleteRes) {
@@ -43,6 +56,8 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
                 })
         }
     }
+
+    //APPROVE BOOKING
     const updateBookingStatus = () => {
         setisLoading(true);
         fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments?id=${_id}`, {
@@ -102,8 +117,19 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
                         <p className="apt-bookedate"><span style={{ color: '#3D777A', fontWeight: 'bold' }}>Booked at: </span> {bookingDate + ' | ' + bookingTime}</p>
                         <p className="apt-status"><span style={{ color: '#3D777A', fontWeight: 'bold' }}>Status: </span>{bookStat}</p>
                     </div>
+                    <div className="customer-info">
+                        <div><span style={{ color: '#3D777A', fontWeight: 'bold' }}>Customer info:</span></div>
+                        {
+                            customerinfoLoading ? 'LOADING. . .'
+                                :
+                                <>
+                                    <div className="customer-email">{email} || </div>
+                                    <div className="customer-phone"> {phone}</div>
+                                </>
+                        }
+                    </div>
                     <div className="manage-all-bookings-btn">
-                        <button className="jbutton" onClick={deleteBook}>Delete</button>
+                        <button className="jbutton" emailnClick={deleteBook}>Delete</button>
                         <div>
                             {bookStat === 'pending' &&
                                 <>

@@ -15,8 +15,12 @@ const MakeAdmin = () => {
                     alert('Admin has been added');
                     reset();
                 }
+                else if (data.matchedCount === 0) {
+                    alert('No user found of this email in the database');
+                    reset();
+                }
                 else {
-                    alert('Something went wrong!')
+                    alert('Something went wrong');
                 }
             })
     }

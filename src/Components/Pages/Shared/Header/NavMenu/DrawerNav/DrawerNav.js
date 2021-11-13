@@ -3,12 +3,18 @@ import { List, ListItem } from '@mui/material';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../../../Hooks/useAuth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt, faSignOutAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 
 const DrawerNav = () => {
     const { user, userSignout } = useAuth();
     return (
         <List>
+            {
+                user.email &&
+                <ListItem>
+                    <span className="jbutton"><FontAwesomeIcon icon={faUserAlt} /> {user.displayName}</span>
+                </ListItem>
+            }
             <ListItem>
                 <Link to='/apartments' className="jbutton">Apartments</Link>
             </ListItem>
