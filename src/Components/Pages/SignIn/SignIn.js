@@ -24,10 +24,10 @@ const SignIn = () => {
             <Container>
                 <h2 className="jsectionhead">Sign in</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="sign-in-form">
-                    <TextField type="text" label="Your email" {...register('userEmail')} variant="outlined" />
-                    <TextField type="password" label="Your password" {...register('userPass')} variant="outlined" />
+                    <TextField type="text" label="Your email" {...register('userEmail')} variant="outlined" required />
+                    <TextField type="password" label="Your password" {...register('userPass')} variant="outlined" required />
                     {error.length > 1 && <Alert severity="error">{error}</Alert>}
-                    <button type="submit" className="jbutton">Contained</button>
+                    <button type="submit" className="jbutton">Sign in</button>
                 </form>
                 <p style={{ textAlign: 'center' }}>
                     New here? please <Link to='/signup' style={{

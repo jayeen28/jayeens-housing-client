@@ -9,7 +9,8 @@ const Review = () => {
     const { user } = useAuth();
     const [rating, setrating] = useState(0);
     const { register, handleSubmit, setValue, reset } = useForm();
-    setValue('name', `${user.displayName}`)
+    setValue('name', `${user.displayName}`);
+    setValue('email', `${user.email}`);
     const onSubmit = data => {
         data.reviewedBy = user.email;
         data.rating = rating;
@@ -37,6 +38,7 @@ const Review = () => {
             <div className="add-review-form">
                 <form onSubmit={handleSubmit(onSubmit)} className="review-form">
                     <TextField label="Your name" variant="outlined" {...register('name')} required />
+                    <TextField label="Your email" variant="outlined" {...register('email')} required />
                     <TextField
                         label="Your review"
                         rows={4}

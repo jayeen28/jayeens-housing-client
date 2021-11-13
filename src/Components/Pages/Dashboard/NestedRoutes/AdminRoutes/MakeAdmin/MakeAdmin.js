@@ -28,7 +28,7 @@ const MakeAdmin = () => {
         <div>
             <h2 className="jsectionhead">Lets make admin</h2>
             <form onSubmit={handleSubmit(onSubmit)} className="makeadminform">
-                <TextField label="email" {...register('adminEmail')} sx={{ borderColor: '#1d6b6f' }} />
+                <TextField label="email" {...register('adminEmail')} sx={{ borderColor: '#1d6b6f' }} required />
                 <button variant='contained' type="submit" className="jbutton">Submit</button>
             </form>
         </div>
