@@ -31,7 +31,7 @@ const MyBookings = () => {
                         :
                         bookedApartments.length === 0 ?
                             <div style={{ textAlign: 'center' }}>
-                                <p>Sir you dont have any bookings yet. Please explore our apartments.</p>
+                                <p>Sir, you dont have any bookings yet. Please explore our apartments.</p>
                                 <Link to="/apartments" className="jbutton">Explore</Link>
                             </div>
                             :
