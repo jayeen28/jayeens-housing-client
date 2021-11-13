@@ -46,7 +46,7 @@ const SideNav = ({ isLoading, currentUser }) => {
             <Divider />
             <List>
                 <ListItem>
-                    <Link to='/' className="jbutton"><FontAwesomeIcon icon={faAngleDoubleLeft} /> Back to home</Link>
+                    <Link to='/' className="jbutton"><FontAwesomeIcon icon={faAngleDoubleLeft} /> Home</Link>
                 </ListItem>
                 <ListItem>
                     <button onClick={userSignout} sx={{ color: 'black' }} className="jbutton"><FontAwesomeIcon icon={faSignOutAlt} /> Sign out</button>

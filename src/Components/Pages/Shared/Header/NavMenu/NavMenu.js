@@ -1,3 +1,5 @@
+import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
@@ -16,10 +18,10 @@ const NavMenu = ({ navItemContainer }) => {
                     user.email ?
                         <>
                             <Link to='/dashboard' className="jbutton">Dashborad</Link>
-                            <button onClick={userSignout} className="jbutton">Sign out</button>
+                            <button onClick={userSignout} className="jbutton"><FontAwesomeIcon icon={faSignOutAlt} /> Sign out</button>
                         </>
                         :
-                        <Link to='/signin'>Sign In</Link>
+                        <Link to='/signin' className="jbutton"><FontAwesomeIcon icon={faSignInAlt} /> Sign in</Link>
                 }
             </div>
         </Box>
