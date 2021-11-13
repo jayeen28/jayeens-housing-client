@@ -1,0 +1,21 @@
+.thankyou-page-contents h3 {
+    font-size: 2rem;
+}
+.thankyou-page-contents h1 {
+    font-size: 4rem;
+}
+.thankyou-page-contents {
+    text-align: center;
+}
+.thankyou-page-contents {
+    padding: 5rem 0.5rem;
+}
+
+@media only screen and (max-width:600px){
+    .thankyou-page-contents h1 {
+        font-size: 2rem;
+    }
+    .thankyou-page-contents h3 {
+        font-size: 0.8rem;
+    }
+}

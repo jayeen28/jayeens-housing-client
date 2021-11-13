@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { CircularProgress, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../Hooks/useAuth';
+import { useHistory } from 'react-router';
 
 const BookApartmentForm = ({ isLoading, customerData, apartmentData }) => {
     const { handleSubmit, register, setValue, reset } = useForm();
     const { user } = useAuth();
+    const history = useHistory();
     const [isloading, setisloading] = useState(false);
 
     //SET DEFAULT VALUES
@@ -52,7 +54,7 @@ const BookApartmentForm = ({ isLoading, customerData, apartmentData }) => {
             .then(data => {
                 if (data.acknowledged) {
                     reset();
-                    alert('Your booking has placed. We will contact you very soon');
+                    history.push('/thankyou')
                     setisloading(false);
                 } else {
                     alert('Something went wrong');

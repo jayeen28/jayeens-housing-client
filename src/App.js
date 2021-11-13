@@ -8,6 +8,7 @@ import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
 import Home from './Components/Pages/Home/Home';
 import SignIn from './Components/Pages/SignIn/SignIn';
 import SignUp from './Components/Pages/SignUp/SignUp';
+import ThankyouPage from './Components/Pages/ThankyouPage/ThankyouPage';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 // import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 
@@ -45,6 +46,9 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
+            <Route path="/thankyou">
+              <ThankyouPage />
+            </Route>
             <Route path="*">
               <ErrorPage />
             </Route>
