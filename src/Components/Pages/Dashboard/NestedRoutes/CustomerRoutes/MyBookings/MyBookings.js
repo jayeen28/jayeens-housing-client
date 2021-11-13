@@ -1,5 +1,6 @@
 import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../../../Hooks/useAuth';
 import MyBookingbox from './MyBookingbox/MyBookingbox';
 
@@ -28,10 +29,16 @@ const MyBookings = () => {
                             <CircularProgress sx={{ color: '#3D777A' }} />
                         </div>
                         :
-                        bookedApartments.map(aprt => <MyBookingbox key={aprt._id} apartmentData={aprt} render={render} setrender={setrender} />)
+                        bookedApartments.length === 0 ?
+                            <div style={{ textAlign: 'center' }}>
+                                <p>Sir you dont have any bookings yet. Please explore our apartments.</p>
+                                <Link to="/apartments" className="jbutton">Explore</Link>
+                            </div>
+                            :
+                            bookedApartments.map(aprt => <MyBookingbox key={aprt._id} apartmentData={aprt} render={render} setrender={setrender} />)
                 }
             </div>
-        </div>
+        </div >
 
     );
 };

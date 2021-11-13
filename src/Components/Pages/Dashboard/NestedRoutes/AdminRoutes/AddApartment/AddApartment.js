@@ -31,7 +31,7 @@ const AddApartment = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="add-apartment-form">
                     <TextField label="Name" variant="outlined" {...register('name')} />
                     <TextField type="url" label="Image URL" variant="outlined" {...register('img')} />
-                    <TextField id="outlined-multiline-static" label="Multiline" multiline rows={4} {...register('description')} />
+                    <TextField label="Description" multiline rows={4} {...register('description')} />
                     <TextField type="number" label="Price" variant="outlined" {...register('price')} />
                     <button type="submit" className="jbutton">Add apartment</button>
                 </form>

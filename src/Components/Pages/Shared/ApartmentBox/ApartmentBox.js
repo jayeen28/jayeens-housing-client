@@ -23,7 +23,7 @@ const ApartmentBox = ({ apartment }) => {
                     <Typography gutterBottom variant="h5" component="div">
                         {name}
                     </Typography>
-                    <Typography variant="p" color="text.secondary">{description.slice(0, 130)}</Typography>
+                    <Typography variant="p" color="text.secondary">{description.slice(0, 130) + '....'}</Typography>
                     <Typography gutterBottom variant="h6" component="div">
                         Price: {price}$
                     </Typography>
