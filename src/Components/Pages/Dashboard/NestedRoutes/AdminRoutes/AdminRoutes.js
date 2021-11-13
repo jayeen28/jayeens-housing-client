@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
+import ErrorRoute from '../ErrorRoute/ErrorRoute';
 import AddApartment from './AddApartment/AddApartment';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import ManageAllBookings from './ManageAllBookings/ManageAllBookings';
@@ -23,6 +24,9 @@ const AdminRoutes = () => {
             </Route>
             <Route path={`${path}/manageapartments`}>
                 <ManageApartments />
+            </Route>
+            <Route path={`${path}/*`}>
+                <ErrorRoute />
             </Route>
         </Switch>
     );
