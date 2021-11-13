@@ -4,8 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Footer.css';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { useForm } from 'react-hook-form';
 
 const Footer = () => {
+    const { register, handleSubmit, reset } = useForm();
+    const onSubmit = data => {
+        alert('Your subscription has been submitted')
+        reset();
+    }
     return (
         <footer className="footer-section">
             <Container sx={{ borderTop: '1px solid #1D6B6F' }}>
@@ -32,9 +38,9 @@ const Footer = () => {
                     <Grid item xs={12} sm={12} md={6}>
                         <div className="footer-right">
                             <h2>Subscribe to our newsletter</h2>
-                            <form className="subscribe-form">
-                                <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-                                <button className="jbutton">Subscribe</button>
+                            <form className="subscribe-form" onSubmit={handleSubmit(onSubmit)}>
+                                <TextField id="outlined-basic" label="Your email" variant="outlined"{...register('email')} />
+                                <button className="jbutton" type="submit">Subscribe</button>
                             </form>
                         </div>
                     </Grid>
