@@ -30,14 +30,14 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
 
     //GET CUSTOMER INFO 
     useEffect(() => {
-        fetch(`http://localhost:5000/users?uid=${bookedBy}`)
+        fetch(`https://obscure-refuge-52189.herokuapp.com/users?uid=${bookedBy}`)
             .then(res => res.json())
             .then(data => {
                 setcustomerData(data);
                 setcustomerinfoLoading(false);
             })
     }, [bookedBy])
-
+    console.log(customerData)
     //DELETE BOOKING
     const deleteBook = () => {
         const deleteRes = window.confirm('Are you sure, you want to delete?');
