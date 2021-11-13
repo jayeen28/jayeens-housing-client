@@ -21,20 +21,20 @@ const SignUp = () => {
         <div className="signin-page">
             <Header />
             <Container>
-                <h2 className="jsectionhead">sign up</h2>
-                <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
-                    <TextField type="text" label="Your name" {...register('userName')} variant="outlined" required />
-                    <TextField type="email" label="Your email" {...register('userEmail')} variant="outlined" required />
-                    <TextField type="password" label="Your password" {...register('userPass')} variant="outlined" required />
-                    {error.length > 1 && <Alert severity="error">{error}</Alert>}
-                    <button type="submit" className="jbutton">Sign up</button>
-                </form>
-                <p style={{ textAlign: 'center' }}>
-                    Already signed up? please <Link to='/signin' style={{
-                        color: '#1D6B6F', fontWeight: 'bold',
-                        textDecoration: 'underline'
-                    }}>Sign in</Link>
-                </p>
+                <div className="sign-up-section"><h2 className="jsectionhead">sign up</h2>
+                    <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
+                        <TextField type="text" label="Your name" {...register('userName')} variant="outlined" required />
+                        <TextField type="email" label="Your email" {...register('userEmail')} variant="outlined" required />
+                        <TextField type="password" label="Your password" {...register('userPass')} variant="outlined" required />
+                        {error.length > 1 && <Alert severity="error">{error}</Alert>}
+                        <button type="submit" className="jbutton">Sign up</button>
+                    </form>
+                    <p style={{ textAlign: 'center' }}>
+                        Already signed up? please <Link to='/signin' style={{
+                            color: '#1D6B6F', fontWeight: 'bold',
+                            textDecoration: 'underline'
+                        }}>Sign in</Link>
+                    </p></div>
             </Container>
             <Footer />
         </div>

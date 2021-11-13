@@ -5,6 +5,9 @@ form.sign-in-form {
     width: 60%;
     margin: auto;
 }
+.sign-in-section{
+    padding:5% 0;
+}
 @media only screen and (max-width:600px){
     form.sign-in-form{
         width: 100%;

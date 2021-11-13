@@ -5,6 +5,9 @@ form.signup-form {
     width: 60%;
     margin: auto;
 }
+.sign-up-section{
+padding:5% 0;
+}
 
 @media only screen and (max-width:600px){
     form.signup-form{
