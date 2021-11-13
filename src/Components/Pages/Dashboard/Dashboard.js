@@ -15,7 +15,7 @@ import './Dashboard.css'
 const drawerWidth = 268;
 
 function Dashboard(props) {
-    const { user } = useAuth();
+    const { user, isadmin, isAdminLoading } = useAuth();
     const [currentUser, setcurrentUser] = React.useState({});
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -24,7 +24,7 @@ function Dashboard(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    //CHECK IF THE USER ADMIN OR NOT
+    //GET CURRENT USER
     React.useEffect(() => {
         fetch(`https://obscure-refuge-52189.herokuapp.com/users?uid=${user.uid}`)
             .then(res => res.json())
@@ -101,7 +101,13 @@ function Dashboard(props) {
                 <Toolbar />
                 {/* DASHBOARD BODY */}
                 {
-                    currentUser.role === 'admin' ? <AdminRoutes /> : <CustomerRoutes />
+                    isAdminLoading ? 'PREPARING CONTENT. . .'
+                        :
+                        <>
+                            {
+                                isadmin ? <AdminRoutes /> : <CustomerRoutes />
+                            }
+                        </>
                 }
                 {/* // */}
             </Box>

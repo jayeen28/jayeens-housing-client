@@ -8,6 +8,8 @@ const useFirebase = () => {
     const [user, setuser] = useState({});
     const [error, seterror] = useState('');
     const [isLoading, setisLoading] = useState(true);
+    const [isAdminLoading, setisAdminLoading] = useState(true);
+    const [isadmin, setisadmin] = useState(false);
     const auth = getAuth();
 
     //SEND USER DATA TO DATABASE
@@ -21,7 +23,6 @@ const useFirebase = () => {
             body: JSON.stringify({ uid, displayName, email, role: 'customer' })
         })
     }
-
 
     //SIGN UP USER 
     const userSignup = (email, password, userName, history) => {
@@ -63,6 +64,24 @@ const useFirebase = () => {
             .catch(error => seterror(error.message))
     }
 
+    //CHECK IF LOGED IN USER ADMIN OR NOT
+    useEffect(() => {
+        if (user.uid) {
+            fetch(`http://localhost:5000/users?uid=${user.uid}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.role === 'admin') {
+                        setisadmin(true)
+                    }
+                    else {
+                        setisadmin(false);
+                    }
+                    setisAdminLoading(false)
+                })
+        }
+    }, [user])
+
+
     //USER OBSERVER 
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
@@ -81,6 +100,8 @@ const useFirebase = () => {
         userSignup,
         userSignin,
         userSignout,
+        isAdminLoading,
+        isadmin,
         user,
         error,
         isLoading
