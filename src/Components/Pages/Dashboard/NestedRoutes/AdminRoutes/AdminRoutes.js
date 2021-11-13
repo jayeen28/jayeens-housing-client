@@ -9,10 +9,10 @@ const AdminRoutes = () => {
     let { path } = useRouteMatch();
     return (
         <Switch>
-            <Route exact path={`${path}`}>
+            <Route exact path={`${path}/`}>
                 <ManageAllBookings />
             </Route>
-            <Route path={`${path}/manageallbookings`}>
+            <Route exact path={`${path}/manageallbookings`}>
                 <ManageAllBookings />
             </Route>
             <Route path={`${path}/addapartment`}>

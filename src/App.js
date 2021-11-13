@@ -4,6 +4,7 @@ import AuthProvider from './Components/Context/AuthProvider';
 import Apartments from './Components/Pages/Apartments/Apartments';
 import BookApartment from './Components/Pages/BookApartment/BookApartment';
 import Dashboard from './Components/Pages/Dashboard/Dashboard';
+import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
 import Home from './Components/Pages/Home/Home';
 import SignIn from './Components/Pages/SignIn/SignIn';
 import SignUp from './Components/Pages/SignUp/SignUp';
@@ -44,6 +45,9 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
+            <Route path="*">
+              <ErrorPage />
+            </Route>
           </Switch>
         </Router>
       </AuthProvider>
