@@ -12,7 +12,7 @@ const SignIn = () => {
     const { handleSubmit, register, reset } = useForm();
     const history = useHistory();
     const location = useLocation();
-    const redirect_uri = location.state?.from || '/dashboard';
+    const redirect_uri = location.state?.from || '/';
     const onSubmit = data => {
         const { userEmail, userPass } = data;
         userSignin(userEmail, userPass, history, redirect_uri);
