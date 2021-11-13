@@ -37,7 +37,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
                 setcustomerinfoLoading(false);
             })
     }, [bookedBy])
-    console.log(customerData)
+
     //DELETE BOOKING
     const deleteBook = () => {
         const deleteRes = window.confirm('Are you sure, you want to delete?');
@@ -123,13 +123,13 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
                             customerinfoLoading ? 'LOADING. . .'
                                 :
                                 <>
-                                    <div className="customer-email">{email} || </div>
-                                    <div className="customer-phone"> {phone}</div>
+                                    <div className="customer-phone"> {phone} || </div>
+                                    <div className="customer-email">{email}</div>
                                 </>
                         }
                     </div>
                     <div className="manage-all-bookings-btn">
-                        <button className="jbutton" emailnClick={deleteBook}>Delete</button>
+                        <button className="jbutton" onClick={deleteBook}>Delete</button>
                         <div>
                             {bookStat === 'pending' &&
                                 <>
