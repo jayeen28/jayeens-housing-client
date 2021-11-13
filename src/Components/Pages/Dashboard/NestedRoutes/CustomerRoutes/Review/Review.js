@@ -8,7 +8,7 @@ import './Review.css';
 const Review = () => {
     const { user } = useAuth();
     const [rating, setrating] = useState(0);
-    const { register, handleSubmit, setValue } = useForm();
+    const { register, handleSubmit, setValue, reset } = useForm();
     setValue('name', `${user.displayName}`)
     const onSubmit = data => {
         data.reviewedBy = user.email;
@@ -23,7 +23,11 @@ const Review = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    alert('Your review has been submitted')
+                    alert('Your review has been submitted');
+                    reset();
+                }
+                else {
+                    alert('Something went wrong!')
                 }
             })
     }

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import './AddApartment.css';
 
 const AddApartment = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         fetch('https://obscure-refuge-52189.herokuapp.com/apartments/add', {
             method: 'POST',
@@ -17,6 +17,7 @@ const AddApartment = () => {
             .then(data => {
                 if (data.insertedId) {
                     alert('Apartment is added');
+                    reset();
                 }
                 else {
                     alert('Something went wrong.');

@@ -11,13 +11,13 @@ const ApartmentBox = ({ apartment }) => {
     const { _id, name, description, img, price } = apartment;
     return (
         <Grid item xs={12} sm={12} md={6}>
-            <Card sx={{ boxShadow: '#00000070 0px 0px 8px', borderRadius: '15px', padding: '8px' }}>
+            <Card sx={{ boxShadow: '#3b3b3b82 0px 0px 10px', borderRadius: '15px', padding: '8px', backgroundColor: '#ffffff7a', color: '#323231', border: '1px solid #9bb8b9' }}>
                 <CardMedia
                     component="img"
                     height="300"
                     image={img}
                     alt="green iguana"
-                    sx={{ borderRadius: '10px' }}
+                    sx={{ borderRadius: '15px' }}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">

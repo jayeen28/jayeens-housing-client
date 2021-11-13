@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import './MakeAdmin.css';
 
 const MakeAdmin = () => {
-    const { handleSubmit, register } = useForm();
+    const { handleSubmit, register, reset } = useForm();
 
     const onSubmit = data => {
         fetch(`https://obscure-refuge-52189.herokuapp.com/users/makeadmin?email=${data.adminEmail}`, {
@@ -12,7 +12,8 @@ const MakeAdmin = () => {
         }).then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('Admin has been added')
+                    alert('Admin has been added');
+                    reset();
                 }
                 else {
                     alert('Something went wrong!')

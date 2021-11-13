@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../../Hooks/useAuth';
 
 const BookApartmentForm = ({ isLoading, customerData, apartmentData }) => {
-    const { handleSubmit, register, setValue } = useForm();
+    const { handleSubmit, register, setValue, reset } = useForm();
     const { user } = useAuth();
     const [isloading, setisloading] = useState(false);
 
@@ -51,6 +51,7 @@ const BookApartmentForm = ({ isLoading, customerData, apartmentData }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
+                    reset();
                     alert('Your booking has placed. We will contact you very soon');
                     setisloading(false);
                 } else {
