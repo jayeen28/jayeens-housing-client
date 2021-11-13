@@ -67,7 +67,7 @@ const useFirebase = () => {
     //CHECK IF LOGED IN USER ADMIN OR NOT
     useEffect(() => {
         if (user.uid) {
-            fetch(`http://localhost:5000/users?uid=${user.uid}`)
+            fetch(`https://obscure-refuge-52189.herokuapp.com/users?uid=${user.uid}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.role === 'admin') {
