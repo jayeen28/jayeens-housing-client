@@ -1,9 +1,11 @@
-import { Button, Container, TextField, Typography } from '@mui/material';
+import { Container, TextField } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
+import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
+import './Signin.css';
 
 const SignIn = () => {
     const { userSignin } = useAuth();
@@ -20,16 +22,20 @@ const SignIn = () => {
         <div className="signin-page">
             <Header />
             <Container>
-                This is sign in page
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <h2 className="jsectionhead">Sign in</h2>
+                <form onSubmit={handleSubmit(onSubmit)} className="sign-in-form">
                     <TextField id="outlined-basic" label="Your email" {...register('userEmail')} variant="outlined" />
                     <TextField id="outlined-basic" label="Your password" {...register('userPass')} variant="outlined" />
-                    <Button type="submit" variant="contained">Contained</Button>
+                    <button type="submit" className="jbutton">Contained</button>
                 </form>
-                <Typography>
-                    New here? please <Link to='/signup'>Sign Up</Link>
-                </Typography>
+                <p style={{ textAlign: 'center' }}>
+                    New here? please <Link to='/signup' style={{
+                        color: '#1D6B6F', fontWeight: 'bold',
+                        textDecoration: 'underline'
+                    }}>Sign Up</Link>
+                </p>
             </Container>
+            <Footer />
         </div>
     );
 };

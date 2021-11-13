@@ -1,0 +1,13 @@
+form.makeadminform {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+    gap: 20px;
+}
+
+@media only screen and (max-width:600px){
+    form.makeadminform{
+        width:80%;
+    }
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CircularProgress, Container, Grid } from '@mui/material';
 import ApartmentBox from '../Shared/ApartmentBox/ApartmentBox';
 import Header from '../Shared/Header/Header';
+import Footer from '../Shared/Footer/Footer';
 
 const Apartments = () => {
     const [apartments, setapartments] = useState([]);
@@ -32,6 +33,7 @@ const Apartments = () => {
                         </Grid>
                 }
             </Container>
+            <Footer />
         </div>
     );
 };

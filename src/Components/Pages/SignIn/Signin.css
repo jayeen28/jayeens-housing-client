@@ -1,0 +1,12 @@
+form.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 60%;
+    margin: auto;
+}
+@media only screen and (max-width:600px){
+    form.sign-in-form{
+        width: 100%;
+    }
+}

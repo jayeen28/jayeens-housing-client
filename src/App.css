@@ -10,7 +10,7 @@ a,button{
     text-decoration: none;
 }
 .jbutton{
-    background-color: #3d777a;
+    background-color:#1d6b6f;
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 15px;
@@ -30,6 +30,6 @@ a,button{
         font-size: 22px;
     }
 }
-/* #3D777A */
+/* #3D777A || #1d6b6f*/
 
 /* #ECF3F9 */

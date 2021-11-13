@@ -1,8 +1,7 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { useForm } from 'react-hook-form';
+import './AddApartment.css';
 
 const AddApartment = () => {
     const { register, handleSubmit } = useForm();
@@ -15,18 +14,25 @@ const AddApartment = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.insertedId) {
+                    alert('Apartment is added');
+                }
+                else {
+                    alert('Something went wrong.');
+                }
+            })
     }
     return (
         <div>
-            <h2>Lets add an apartment</h2>
-            <div className="add-apartment-form">
-                <form onSubmit={handleSubmit(onSubmit)}>
+            <h2 className="jsectionhead">Lets add an apartment</h2>
+            <div className="add-apartment-form-wrapper">
+                <form onSubmit={handleSubmit(onSubmit)} className="add-apartment-form">
                     <TextField label="Name" variant="outlined" {...register('name')} />
                     <TextField type="url" label="Image URL" variant="outlined" {...register('img')} />
-                    <TextareaAutosize minRows={3} placeholder="Description" {...register('description')} />
+                    <TextField id="outlined-multiline-static" label="Multiline" multiline rows={4} {...register('description')} />
                     <TextField type="number" label="Price" variant="outlined" {...register('price')} />
-                    <Button type="submit">Add apartment</Button>
+                    <button type="submit" className="jbutton">Add apartment</button>
                 </form>
             </div>
         </div>

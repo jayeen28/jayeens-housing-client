@@ -71,7 +71,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
     const { myBookingMobile } = useStyle();
     return (
         <Grid className={myBookingMobile} container sx={{
-            border: '1px solid #3D777A', margin: '40px 10px', backgroundColor: 'white',
+            border: '1px solid #1d6b6f', margin: '40px 10px', backgroundColor: 'white',
             boxShadow: '#00000070 0px 0px 8px', borderRadius: '15px'
         }}>
             <Grid item lg={6}>
@@ -92,7 +92,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
                             </p>
                             :
                             <p className="apt-desc">
-                                {descShow + '...'}<button style={{ backgroundColor: '#3D777A', color: 'white', border: 'none', borderRadius: '5px' }} id={`${_id}`} onClick={() => readMore()}>Read more</button>
+                                {descShow + '...'}<button style={{ backgroundColor: '#1d6b6f', color: 'white', border: 'none', borderRadius: '5px' }} id={`${_id}`} onClick={() => readMore()}>Read more</button>
                             </p>
                     }
 

@@ -16,7 +16,7 @@ const ManageAllBookings = () => {
     }, [render])
     return (
         <div>
-            <h2 className="jsectionhead">Total {allBookings.length} Bookings</h2>
+            <h2 className="jsectionhead">Manage all bookings<small style={{ display: 'block', fontSize: '14px', color: '#1D6B6F' }}>Total {allBookings.length} bookings</small></h2>
             {
                 isloading ?
                     <div style={{ textAlign: 'center' }}>

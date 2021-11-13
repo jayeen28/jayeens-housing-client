@@ -6,6 +6,7 @@ import { useParams } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 import Header from '../Shared/Header/Header';
 import BookApartmentForm from './BookApartmentForm/BookApartmentForm';
+import Footer from '../Shared/Footer/Footer';
 
 const BookApartment = () => {
     const { id } = useParams();
@@ -60,6 +61,7 @@ const BookApartment = () => {
                     </Grid>
                 </Grid>
             </Container>
+            <Footer />
         </div>
     );
 };

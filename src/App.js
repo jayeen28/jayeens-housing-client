@@ -5,11 +5,18 @@ import Apartments from './Components/Pages/Apartments/Apartments';
 import BookApartment from './Components/Pages/BookApartment/BookApartment';
 import Dashboard from './Components/Pages/Dashboard/Dashboard';
 import Home from './Components/Pages/Home/Home';
-import Footer from './Components/Pages/Shared/Footer/Footer';
 import SignIn from './Components/Pages/SignIn/SignIn';
 import SignUp from './Components/Pages/SignUp/SignUp';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+// import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: {
+//       main: '#3D777A'
+//     }
+//   }
+// })
 function App() {
   return (
     <div className="App">
@@ -38,7 +45,6 @@ function App() {
               <Dashboard />
             </PrivateRoute>
           </Switch>
-          <Footer />
         </Router>
       </AuthProvider>
     </div>

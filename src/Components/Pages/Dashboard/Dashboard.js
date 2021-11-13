@@ -12,7 +12,7 @@ import SideNav from './SideNav/SideNav';
 import { AppBar, Typography } from '@mui/material';
 import './Dashboard.css'
 
-const drawerWidth = 270;
+const drawerWidth = 260;
 
 function Dashboard(props) {
     const { user } = useAuth();
@@ -45,7 +45,7 @@ function Dashboard(props) {
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
-                    backgroundColor: '#3D777A'
+                    backgroundColor: '#1d6b6f'
                 }}>
                 <Toolbar>
                     <IconButton
