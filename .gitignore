@@ -6,6 +6,7 @@
 .pnp.js
 tempo.json
 requirement.txt
+imgs
 # testing
 /coverage
 

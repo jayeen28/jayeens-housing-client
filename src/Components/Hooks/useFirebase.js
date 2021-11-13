@@ -20,19 +20,18 @@ const useFirebase = () => {
             },
             body: JSON.stringify({ uid, displayName, email, role: 'customer' })
         })
-            .then(res => res.json())
-            .then(data => console.log(data));
     }
 
 
     //SIGN UP USER 
-    const userSignup = (email, password, userName) => {
+    const userSignup = (email, password, userName, history) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(res => {
                 setuser(res.user);
                 updateUserName(userName);
                 res.user.displayName = userName;
-                setCustomerToDb(res.user)
+                setCustomerToDb(res.user);
+                history.push('/');
             })
             .catch(error => seterror(error.message))
     }

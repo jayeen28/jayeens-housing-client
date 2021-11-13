@@ -24,8 +24,8 @@ const SignIn = () => {
             <Container>
                 <h2 className="jsectionhead">Sign in</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="sign-in-form">
-                    <TextField type="text" id="outlined-basic" label="Your email" {...register('userEmail')} variant="outlined" />
-                    <TextField type="password" id="outlined-basic" label="Your password" {...register('userPass')} variant="outlined" />
+                    <TextField type="text" label="Your email" {...register('userEmail')} variant="outlined" />
+                    <TextField type="password" label="Your password" {...register('userPass')} variant="outlined" />
                     <button type="submit" className="jbutton">Contained</button>
                 </form>
                 <p style={{ textAlign: 'center' }}>

@@ -1,7 +1,7 @@
 import { Container, TextField } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
@@ -9,11 +9,12 @@ import './SignUp.css';
 
 const SignUp = () => {
     const { userSignup } = useAuth()
+    const history = useHistory();
     const { handleSubmit, register, reset } = useForm();
 
     const onSubmit = data => {
         const { userName, userEmail, userPass } = data;
-        userSignup(userEmail, userPass, userName)
+        userSignup(userEmail, userPass, userName, history)
         reset();
     }
     return (
@@ -22,9 +23,9 @@ const SignUp = () => {
             <Container>
                 <h2 className="jsectionhead">sign up</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="signup-form">
-                    <TextField type="text" id="outlined-basic" label="Your name" {...register('userName')} variant="outlined" />
-                    <TextField type="email" id="outlined-basic" label="Your email" {...register('userEmail')} variant="outlined" />
-                    <TextField type="password" id="outlined-basic" label="Your password" {...register('userPass')} variant="outlined" />
+                    <TextField type="text" label="Your name" {...register('userName')} variant="outlined" />
+                    <TextField type="email" label="Your email" {...register('userEmail')} variant="outlined" />
+                    <TextField type="password" label="Your password" {...register('userPass')} variant="outlined" />
                     <button type="submit" className="jbutton">Contained</button>
                 </form>
                 <p style={{ textAlign: 'center' }}>

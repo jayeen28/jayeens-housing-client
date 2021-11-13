@@ -14,13 +14,15 @@ const HomeReviews = () => {
         <section className="reviews-section">
             <Container>
                 <h2 className="jsectionhead">Reviews</h2>
-                <div className="review-boxes">
-                    <Grid container>
-                        {
-                            reviews.map(rvw => <ReviewBox key={rvw._id} customerReview={rvw} />)
-                        }
-                    </Grid>
-                </div>
+                {reviews.length === 0 ? <p style={{ textAlign: 'center' }}>No reviews to show. Please give us a review.</p> :
+                    <div className="review-boxes">
+                        <Grid container>
+                            {
+                                reviews.map(rvw => <ReviewBox key={rvw._id} customerReview={rvw} />)
+                            }
+                        </Grid>
+                    </div>
+                }
             </Container>
         </section>
     );
