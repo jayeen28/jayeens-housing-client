@@ -1,0 +1,40 @@
+.footer-section{
+    padding:5% 0;
+}
+form.subscribe-form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 12px;
+}
+.footer-icons {
+    font-size: 40px;
+    display: flex;
+    justify-content: space-between;
+    width: 44%;
+    color: #1D6B6F;
+}
+.footer-description{
+    width: 60%;
+}
+.footer-right, .footer-left {
+    padding: 40px 20px;
+}
+
+@media only screen and (max-width:600px){
+    .footer-section{
+        padding:10% 0;
+    }
+    .footer-description{
+        width: 100%;
+    }
+    .footer-icons{
+        width: 90%;
+    }
+    form.subscribe-form{
+        width: 95%;
+    }
+    .footer-right, .footer-left {
+        padding: 10px;
+    }
+}
