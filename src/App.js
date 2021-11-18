@@ -6,19 +6,12 @@ import BookApartment from './Components/Pages/BookApartment/BookApartment';
 import Dashboard from './Components/Pages/Dashboard/Dashboard';
 import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
 import Home from './Components/Pages/Home/Home';
+import ProfilePage from './Components/Pages/ProfilePage/ProfilePage';
 import SignIn from './Components/Pages/SignIn/SignIn';
 import SignUp from './Components/Pages/SignUp/SignUp';
 import ThankyouPage from './Components/Pages/ThankyouPage/ThankyouPage';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
-// import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: {
-//       main: '#3D777A'
-//     }
-//   }
-// })
 function App() {
   return (
     <div className="App">
@@ -45,6 +38,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard />
+            </PrivateRoute>
+            <PrivateRoute path="/profile/:userName">
+              <ProfilePage />
             </PrivateRoute>
             <Route path="/thankyou">
               <ThankyouPage />

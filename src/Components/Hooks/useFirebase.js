@@ -10,6 +10,7 @@ const useFirebase = () => {
     const [isLoading, setisLoading] = useState(true);
     const [isAdminLoading, setisAdminLoading] = useState(true);
     const [isadmin, setisadmin] = useState(false);
+    const [profileUpdate, setprofileUpdate] = useState(false);
     const auth = getAuth();
 
     //SEND USER DATA TO DATABASE
@@ -38,13 +39,32 @@ const useFirebase = () => {
             .catch(error => seterror(error.message))
     }
 
-    //UPDATE USER NAME AFTER SINGUP
+    //UPDATE USER NAME
     const updateUserName = userName => {
         updateProfile(auth.currentUser, {
             displayName: userName
         })
             .catch(error => seterror(error.message))
+            .finally(() => {
+                setprofileUpdate(!profileUpdate);
+            })
     }
+
+    //UPDATE PROFILE IMAGE
+    const updateUserProfileImage = imgUrl => {
+        updateProfile(auth.currentUser, {
+            photoURL: imgUrl || null,
+        })
+            .then(res => {
+                seterror('');
+            })
+            .catch(error => seterror(error.message))
+            .finally(() => {
+                setisLoading(false);
+                setprofileUpdate(!profileUpdate)
+            })
+    }
+    // console.log(error)
 
     //SIGN IN USER
     const userSignin = (email, passoword, history, redirect_uri) => {
@@ -82,7 +102,6 @@ const useFirebase = () => {
                 })
         }
     }, [user])
-
     //USER OBSERVER 
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
@@ -96,11 +115,15 @@ const useFirebase = () => {
             setisLoading(false)
             return () => unsubscribed;
         })
-    }, [auth])
+    }, [auth, profileUpdate]);
+    // console.log(user)
     return {
         userSignup,
         userSignin,
         userSignout,
+        updateUserProfileImage,
+        setisLoading,
+        updateUserName,
         isAdminLoading,
         isadmin,
         user,

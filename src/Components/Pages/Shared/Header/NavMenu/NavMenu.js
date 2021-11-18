@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { faClipboardCheck, faLaptopHouse, faSignInAlt, faSignOutAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardCheck, faLaptopHouse, faSignInAlt, faSignOutAlt, faUserAlt, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
@@ -13,7 +13,7 @@ import './NavMenu.css';
 
 const NavMenu = ({ navItemContainer }) => {
     const { user, userSignout, isLoading } = useAuth();
-
+    const userName = user.email?.split('@')[0];
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -42,7 +42,9 @@ const NavMenu = ({ navItemContainer }) => {
 
                                     {
                                         user.photoURL ?
-                                            '' :
+                                            <span className="user-image">
+                                                <img src={user.photoURL} alt="userImage" style={{ width: '100%', height: '100%', borderRadius: '100%' }} />
+                                            </span> :
                                             <span className="user-image-icon">
                                                 <FontAwesomeIcon icon={faUserAlt} />
                                             </span>
@@ -59,6 +61,12 @@ const NavMenu = ({ navItemContainer }) => {
                                     onClose={handleClose}
                                     TransitionComponent={Fade}
                                 >
+                                    <MenuItem onClick={handleClose}>
+                                        <p>Signed in as <strong>{userName}</strong></p>
+                                    </MenuItem>
+                                    <MenuItem onClick={handleClose}>
+                                        <Link to={`/profile/${userName}`} className="jbutton"><FontAwesomeIcon icon={faUserCog} /> Profile</Link>
+                                    </MenuItem>
                                     <MenuItem onClick={handleClose}>
                                         <Link to='/dashboard' className="jbutton"><FontAwesomeIcon icon={faClipboardCheck} /> Dashborad</Link>
                                     </MenuItem>

@@ -1,0 +1,25 @@
+form.profileImage-input-form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    gap: 15px;
+}
+.profile-image-show {
+    height: 250px;
+    width: 250px;
+}
+.profile-image-show img {
+    border-radius: 100%;
+    border: 15px solid #1D6B6F;
+}
+.profile-information-setting {
+    display: flex;
+    align-items: center;
+}
+.profile-text-managements {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 20px;
+}
