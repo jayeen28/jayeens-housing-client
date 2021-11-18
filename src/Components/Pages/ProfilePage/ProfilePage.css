@@ -23,3 +23,15 @@ form.profileImage-input-form {
     width: 60%;
     gap: 20px;
 }
+
+@media only screen  and (max-width:600px){
+    .profile-information-setting {
+        flex-direction: column;
+    }
+    form.profileImage-input-form {
+        width: 100%;
+    }
+    .profile-text-managements {
+        width: 90%;
+    }
+}
