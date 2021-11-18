@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import NavMenu from './NavMenu/NavMenu';
 import { makeStyles } from '@mui/styles';
-import { Drawer, useTheme } from '@mui/material';
+import { Drawer, Grid, useTheme } from '@mui/material';
 import DrawerNav from './NavMenu/DrawerNav/DrawerNav';
 import jayeensHousing from '../../../../images/jayeens-housing.png';
 
@@ -33,22 +33,37 @@ const Header = () => {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static" sx={{ backgroundColor: '#FFFFFF' }}>
                     <Toolbar>
-                        <IconButton
-                            size="large"
-                            className={menuIcon}
-                            edge="start"
-                            aria-label="menu"
-                            onClick={() => setdrawerOpen(true)}
-                            sx={{ mr: 2, color: '#3D777A' }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            <Link to='/'>
-                                <img src={jayeensHousing} alt="JayeensHousingBrand" />
-                            </Link>
-                        </Typography>
-                        <NavMenu navItemContainer={navItemContainer}></NavMenu>
+                        <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
+                            <Grid item md={3}>
+                                <Grid container sx={{ alignItems: 'center' }}>
+                                    <Grid item xs={10}>
+                                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                                            <Link to='/'>
+                                                <div className="jayeens-housing-brand">
+                                                    <img src={jayeensHousing} alt="JayeensHousingBrand" style={{ width: '100%' }} />
+                                                </div>
+                                            </Link>
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={2} sx={{ textAlign: 'right' }}>
+                                        <IconButton
+                                            size="large"
+                                            className={menuIcon}
+                                            edge="start"
+                                            aria-label="menu"
+                                            onClick={() => setdrawerOpen(true)}
+                                            sx={{ color: '#3D777A', border: '1px solid #3D777A', borderRadius: '15px' }}
+                                        >
+                                            <MenuIcon />
+                                        </IconButton>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid item md={9}>
+                                <NavMenu navItemContainer={navItemContainer}></NavMenu>
+                            </Grid>
+                        </Grid>
+
                     </Toolbar>
                 </AppBar>
             </Box>

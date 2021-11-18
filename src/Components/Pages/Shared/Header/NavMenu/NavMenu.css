@@ -1,3 +1,21 @@
 .nav-btns .jbutton {
     margin: 0px 10px;
 }
+.nav-btns {
+    text-align: right;
+}
+span.user-image-icon {
+    background-color: #1D6B6F;
+    font-size: 30px;
+    border-radius: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 0 12px;
+    height: 100%;
+    width: 100%;
+}
+@media only screen and (max-width:600px){
+    span.user-image-icon{
+        font-size: 16px;
+    }
+}
