@@ -86,7 +86,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
     const { myBookingMobile } = useStyle();
     return (
         <Grid className={myBookingMobile} container sx={{
-            border: '1px solid #1d6b6f', margin: '40px 10px', backgroundColor: 'white',
+            border: '1px solid #1d6b6f', margin: '40px 0px', backgroundColor: 'white',
             boxShadow: '#00000070 0px 0px 8px', borderRadius: '15px'
         }}>
             <Grid item lg={6}>
