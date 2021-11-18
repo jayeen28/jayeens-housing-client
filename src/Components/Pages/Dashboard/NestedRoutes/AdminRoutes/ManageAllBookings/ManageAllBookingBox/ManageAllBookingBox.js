@@ -8,11 +8,11 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
     const { bookingDate, bookingTime, bookedBy } = bookingInfo;
     const [bookStat, setbookStat] = useState(bookstatus);
     const [customerData, setcustomerData] = useState({});
-    const { email, phone } = customerData;
     const [readBtn, setreadBtn] = useState(true);
     const [descShow, setdescShow] = useState(description.slice(0, 297));
     const [isLoading, setisLoading] = useState(false);
     const [customerinfoLoading, setcustomerinfoLoading] = useState(true);
+    const { email, phone } = customerData;
 
     const readMore = () => {
         const readBtnText = document.getElementById(`${_id}`)
@@ -33,7 +33,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
         fetch(`https://obscure-refuge-52189.herokuapp.com/users?uid=${bookedBy}`)
             .then(res => res.json())
             .then(data => {
-                setcustomerData(data);
+                setcustomerData(data)
                 setcustomerinfoLoading(false);
             })
     }, [bookedBy])

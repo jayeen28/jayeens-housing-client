@@ -32,7 +32,7 @@ const useFirebase = () => {
                 updateUserName(userName);
                 res.user.displayName = userName;
                 setCustomerToDb(res.user);
-                seterror('')
+                seterror('');
                 history.push('/');
             })
             .catch(error => seterror(error.message))
@@ -72,7 +72,7 @@ const useFirebase = () => {
             fetch(`https://obscure-refuge-52189.herokuapp.com/users?uid=${user.uid}`)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.role === 'admin') {
+                    if (data?.role === 'admin') {
                         setisadmin(true)
                     }
                     else {
@@ -82,7 +82,6 @@ const useFirebase = () => {
                 })
         }
     }, [user])
-
 
     //USER OBSERVER 
     useEffect(() => {
