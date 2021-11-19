@@ -69,7 +69,6 @@ const ProfilePage = () => {
                                 </div>
                                 <div className="profile-text-managements">
                                     <TextField label="Name" type="text" {...register('displayName')} defaultValue="" />
-                                    <p>Email and phone number update are under construction</p>
                                     {/* <TextField label="Email" type="email" {...register('email')} defaultValue="" />
                                     <TextField label="Phone" type="number" {...register('phoneNumber')} defaultValue="" /> */}
                                 </div>

@@ -33,9 +33,9 @@ const Header = () => {
             <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static" sx={{ backgroundColor: '#FFFFFF' }}>
                     <Toolbar>
-                        <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
-                            <Grid item md={3}>
-                                <Grid container sx={{ alignItems: 'center' }}>
+                        <Grid container sx={{ alignItems: 'center' }}>
+                            <Grid item md={3} sx={{ width: '100%' }}>
+                                <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
                                     <Grid item xs={10}>
                                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                                             <Link to='/'>
@@ -63,7 +63,6 @@ const Header = () => {
                                 <NavMenu navItemContainer={navItemContainer}></NavMenu>
                             </Grid>
                         </Grid>
-
                     </Toolbar>
                 </AppBar>
             </Box>
