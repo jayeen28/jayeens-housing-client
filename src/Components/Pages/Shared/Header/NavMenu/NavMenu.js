@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { faClipboardCheck, faLaptopHouse, faSignInAlt, faSignOutAlt, faUserAlt, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
@@ -23,7 +22,7 @@ const NavMenu = ({ navItemContainer }) => {
         setAnchorEl(null);
     };
 
-    if (isLoading) { return <CircularProgress sx={{ color: '#3D777A' }} /> }
+    if (isLoading) { return '' }
     return (
         <Box className={navItemContainer}>
             <div className="nav-btns">

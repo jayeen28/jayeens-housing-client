@@ -4,15 +4,26 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../../../Hooks/useAuth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt, faSignOutAlt, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import './DrawerNav.css';
 
 const DrawerNav = () => {
     const { user, userSignout } = useAuth();
+    const userName = user.email.split('@')[0];
     return (
         <List>
             {
                 user.email &&
                 <ListItem>
-                    <span className="jbutton"><FontAwesomeIcon icon={faUserAlt} /> {user.displayName}</span>
+                    <Link to={`/profile/${userName}`} className="jbutton">
+                        <div className="profile-info">
+                            {user.photoURL ?
+                                <div className="userPhotoPhone">
+                                    <img src={user.photoURL} alt="userPhoto" style={{ width: '100%', height: '100%' }} />
+                                </div>
+                                : <FontAwesomeIcon icon={faUserAlt} />
+                            } {userName}
+                        </div>
+                    </Link>
                 </ListItem>
             }
             <ListItem>

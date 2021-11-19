@@ -1,0 +1,13 @@
+.userPhotoPhone {
+    height: 30px;
+    width: 30px;
+}
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.userPhotoPhone img {
+    border-radius: 100%;
+    border: 2px solid white;
+}
