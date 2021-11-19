@@ -8,7 +8,7 @@ import './DrawerNav.css';
 
 const DrawerNav = () => {
     const { user, userSignout } = useAuth();
-    const userName = user.email.split('@')[0];
+    const userName = user.email?.split('@')[0];
     return (
         <List>
             {

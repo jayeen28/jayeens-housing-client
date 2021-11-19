@@ -21,7 +21,6 @@ const NavMenu = ({ navItemContainer }) => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     if (isLoading) { return '' }
     return (
         <Box className={navItemContainer}>
