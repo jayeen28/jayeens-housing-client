@@ -9,7 +9,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
     const [bookStat, setbookStat] = useState(bookstatus);
     const [customerData, setcustomerData] = useState({});
     const [readBtn, setreadBtn] = useState(true);
-    const [descShow, setdescShow] = useState(description.slice(0, 297));
+    const [descShow, setdescShow] = useState(description.slice(0, 255));
     const [isLoading, setisLoading] = useState(false);
     const [customerinfoLoading, setcustomerinfoLoading] = useState(true);
     const { email, phone } = customerData;
@@ -22,7 +22,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
             readBtnText.innerText = 'Read less'
         }
         else {
-            setdescShow(description.slice(0, 297));
+            setdescShow(description.slice(0, 255));
             setreadBtn(true);
             readBtnText.innerText = 'Read more'
         }
@@ -99,7 +99,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
                     <h2 className="apt-name">{name}</h2>
 
                     {
-                        description.length < 298 ?
+                        description.length < 251 ?
                             <p className="apt-desc">
                                 {
                                     description

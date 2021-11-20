@@ -1,5 +1,5 @@
 import initializeAuthentication from "../Firebase/firebase.init";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile, getIdToken } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 //INITIALIZE AUTHENTICATION
@@ -10,7 +10,6 @@ const useFirebase = () => {
     const [isLoading, setisLoading] = useState(true);
     const [isAdminLoading, setisAdminLoading] = useState(true);
     const [isadmin, setisadmin] = useState(false);
-    const [profileUpdate, setprofileUpdate] = useState(false);
     const auth = getAuth();
 
     //SEND USER DATA TO DATABASE
@@ -40,18 +39,17 @@ const useFirebase = () => {
     }
 
     //UPDATE USER NAME
-    const updateUserName = userName => {
+    const updateUserName = (userName, setnameLoading) => {
         updateProfile(auth.currentUser, {
             displayName: userName
         })
+            .then(res => seterror(''))
             .catch(error => seterror(error.message))
-            .finally(() => {
-                setprofileUpdate(!profileUpdate);
-            })
+            .finally(() => { setnameLoading(false) })
     }
 
     //UPDATE PROFILE IMAGE
-    const updateUserProfileImage = imgUrl => {
+    const updateUserProfileImage = (imgUrl, setimageLoading) => {
         updateProfile(auth.currentUser, {
             photoURL: imgUrl || null,
         })
@@ -59,10 +57,7 @@ const useFirebase = () => {
                 seterror('');
             })
             .catch(error => seterror(error.message))
-            .finally(() => {
-                setisLoading(false);
-                setprofileUpdate(!profileUpdate)
-            })
+            .finally(() => { setimageLoading(false) })
     }
     // console.log(error)
 
@@ -107,7 +102,9 @@ const useFirebase = () => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             setisLoading(true);
             if (user) {
-                setuser(user)
+                getIdToken(user)
+                    .then(idToken => localStorage.setItem('idToken', idToken))
+                setuser(user);
             }
             else {
                 setuser({})
@@ -115,7 +112,7 @@ const useFirebase = () => {
             setisLoading(false)
             return () => unsubscribed;
         })
-    }, [auth, profileUpdate]);
+    }, [auth]);
     // console.log(user)
     return {
         userSignup,
