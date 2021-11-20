@@ -8,7 +8,7 @@ const Apartments = () => {
     const [apartments, setapartments] = useState([]);
     const [isLaoding, setisLoading] = useState(true);
     useEffect(() => {
-        fetch('https://obscure-refuge-52189.herokuapp.com/apartments')
+        fetch('https://afternoon-earth-46164.herokuapp.com/apartments')
             .then(res => res.json())
             .then(data => {
                 setapartments(data);

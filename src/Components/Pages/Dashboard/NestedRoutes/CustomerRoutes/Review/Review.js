@@ -14,7 +14,7 @@ const Review = () => {
     const onSubmit = data => {
         data.reviewedBy = user.email;
         data.rating = rating;
-        fetch('https://obscure-refuge-52189.herokuapp.com/reviews/add', {
+        fetch('https://afternoon-earth-46164.herokuapp.com/reviews/add', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

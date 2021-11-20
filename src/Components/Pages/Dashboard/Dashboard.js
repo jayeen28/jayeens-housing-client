@@ -26,7 +26,7 @@ function Dashboard(props) {
     };
     //GET CURRENT USER
     React.useEffect(() => {
-        fetch(`https://obscure-refuge-52189.herokuapp.com/users?uid=${user.uid}`)
+        fetch(`https://afternoon-earth-46164.herokuapp.com/users?uid=${user.uid}`)
             .then(res => res.json())
             .then(data => setcurrentUser(data))
         setisLoading(false);

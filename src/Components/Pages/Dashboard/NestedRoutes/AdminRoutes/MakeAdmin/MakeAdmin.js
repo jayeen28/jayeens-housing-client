@@ -5,9 +5,8 @@ import './MakeAdmin.css';
 
 const MakeAdmin = () => {
     const { handleSubmit, register, reset } = useForm();
-
     const onSubmit = data => {
-        fetch(`https://obscure-refuge-52189.herokuapp.com/users/makeadmin?email=${data.adminEmail}`, {
+        fetch(`https://afternoon-earth-46164.herokuapp.com/users/makeadmin?email=${data.adminEmail}`, {
             method: 'PUT'
         }).then(res => res.json())
             .then(data => {

@@ -30,7 +30,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
 
     //GET CUSTOMER INFO 
     useEffect(() => {
-        fetch(`https://obscure-refuge-52189.herokuapp.com/users?uid=${bookedBy}`)
+        fetch(`https://afternoon-earth-46164.herokuapp.com/users?uid=${bookedBy}`)
             .then(res => res.json())
             .then(data => {
                 setcustomerData(data)
@@ -42,7 +42,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
     const deleteBook = () => {
         const deleteRes = window.confirm('Are you sure, you want to delete?');
         if (deleteRes) {
-            fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments/delete?id=${_id}`, {
+            fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments/delete?id=${_id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -60,7 +60,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
     //APPROVE BOOKING
     const updateBookingStatus = () => {
         setisLoading(true);
-        fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments?id=${_id}`, {
+        fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments?id=${_id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

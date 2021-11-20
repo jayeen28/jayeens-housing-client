@@ -6,7 +6,7 @@ const MApartmentBox = ({ apartment, render, setrender }) => {
     const deleteApartment = () => {
         const deleteres = window.confirm('Are you sure that you want to delete?')
         if (deleteres) {
-            fetch(`https://obscure-refuge-52189.herokuapp.com/apartments/delete?id=${_id}`, {
+            fetch(`https://afternoon-earth-46164.herokuapp.com/apartments/delete?id=${_id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

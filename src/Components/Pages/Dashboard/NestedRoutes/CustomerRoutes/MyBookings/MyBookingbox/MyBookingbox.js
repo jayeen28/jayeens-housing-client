@@ -26,7 +26,7 @@ const MyBookingbox = ({ apartmentData, render, setrender }) => {
     const cancelBooking = () => {
         const confirmRes = window.confirm("Are you sure that you want to cancel?");
         if (confirmRes) {
-            fetch(`https://obscure-refuge-52189.herokuapp.com/bookedapartments/delete?id=${_id}`, {
+            fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments/delete?id=${_id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

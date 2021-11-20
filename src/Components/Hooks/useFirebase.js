@@ -15,7 +15,8 @@ const useFirebase = () => {
     //SEND USER DATA TO DATABASE
     const setCustomerToDb = (user) => {
         const { uid, displayName, email } = user;
-        fetch('https://obscure-refuge-52189.herokuapp.com/users', {
+
+        fetch('https://afternoon-earth-46164.herokuapp.com/users', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -84,7 +85,13 @@ const useFirebase = () => {
     //CHECK IF LOGED IN USER ADMIN OR NOT
     useEffect(() => {
         if (user.uid) {
-            fetch(`https://obscure-refuge-52189.herokuapp.com/users?uid=${user.uid}`)
+            //https://afternoon-earth-46164.herokuapp.com/
+            fetch(`https://afternoon-earth-46164.herokuapp.com/users/authenticate?uid=${user.uid}`, {
+                method: 'GET',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('idToken')}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => {
                     if (data?.role === 'admin') {
@@ -97,6 +104,7 @@ const useFirebase = () => {
                 })
         }
     }, [user])
+
     //USER OBSERVER 
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {

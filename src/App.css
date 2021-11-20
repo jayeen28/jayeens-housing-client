@@ -16,7 +16,8 @@ a,button{
     border-radius: 15px;
     color: white;
     font-family: poppins;
-    border: none
+    border: none;
+    cursor:pointer
 }
 .jsectionhead{
     font-size: 40px;

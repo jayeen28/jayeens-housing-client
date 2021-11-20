@@ -6,7 +6,7 @@ import './AddApartment.css';
 const AddApartment = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        fetch('https://obscure-refuge-52189.herokuapp.com/apartments/add', {
+        fetch('https://afternoon-earth-46164.herokuapp.com/apartments/add', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

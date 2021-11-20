@@ -10,7 +10,7 @@ const MyBookings = () => {
     const [isLoading, setisLoading] = useState(true);
     const [render, setrender] = useState(false);
     useEffect(() => {
-        fetch(`https://obscure-refuge-52189.herokuapp.com/apartments/find?uid=${user.uid}`)
+        fetch(`https://afternoon-earth-46164.herokuapp.com/apartments/find?uid=${user.uid}`)
             .then(res => res.json())
             .then(data => {
                 setbookedApartments(data);
