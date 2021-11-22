@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Grid, useTheme } from '@mui/material';
 import './MyBookingbox.css';
 import { makeStyles } from '@mui/styles';
+import { Link } from 'react-router-dom';
 
 const MyBookingbox = ({ apartmentData, render, setrender }) => {
     const { _id, name, img, description, price, bookstatus, bookingInfo } = apartmentData;
@@ -82,8 +83,10 @@ const MyBookingbox = ({ apartmentData, render, setrender }) => {
                         <p className="apt-bookedate"><span style={{ color: '#3D777A', fontWeight: 'bold' }}>Booked at: </span> {bookingDate + ' | ' + bookingTime}</p>
                         <p className="apt-status"><span style={{ color: '#3D777A', fontWeight: 'bold' }}>Status: </span>{bookstatus}</p>
                     </div>
-
-                    <button className="jbutton" onClick={cancelBooking}>Cancel</button>
+                    <div className="my-booking-btns">
+                        <button className="jbutton" onClick={cancelBooking}>Cancel</button>
+                        <Link to={`/dashboard/pay/${_id}`} className="jbutton" >Checkout</Link>
+                    </div>
                 </div>
             </Grid>
         </Grid>

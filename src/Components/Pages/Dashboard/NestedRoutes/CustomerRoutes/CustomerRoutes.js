@@ -15,7 +15,7 @@ const CustomerRoutes = () => {
             <Route path={`${path}/mybookings`}>
                 <MyBookings />
             </Route>
-            <Route path={`${path}/pay`}>
+            <Route path={`${path}/pay/:id`}>
                 <Pay />
             </Route>
             <Route path={`${path}/review`}>
