@@ -70,7 +70,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    setbookStat('approved');
+                    setbookStat('Confirmed');
                 }
                 else {
                     alert('Something went wrong');
@@ -135,7 +135,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
                     <div className="manage-all-bookings-btn">
                         <button className="jbutton" onClick={deleteBook}>Delete</button>
                         <div>
-                            {bookStat === 'pending' &&
+                            {bookStat === 'Processing' &&
                                 <>
                                     {isLoading && <CircularProgress sx={{ color: '#3D777A' }} size={26} />}
                                     <button className="jbutton" onClick={updateBookingStatus}>Confirm

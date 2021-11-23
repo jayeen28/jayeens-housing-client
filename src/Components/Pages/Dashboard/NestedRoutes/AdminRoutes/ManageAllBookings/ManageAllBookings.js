@@ -4,19 +4,27 @@ import ManageAllBookingBox from './ManageAllBookingBox/ManageAllBookingBox';
 
 const ManageAllBookings = () => {
     const [allBookings, setallBookings] = useState([]);
-    const [isloading, setisloading] = useState(true);
+    const [isloading, setisloading] = useState(false);
     const [render, setrender] = useState(false);
+    const [displayBookingStat, setdisplayBookingStat] = useState('paid');
     useEffect(() => {
-        fetch('https://afternoon-earth-46164.herokuapp.com/bookedapartments')
+        setisloading(true)
+        fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments/${displayBookingStat}`)
             .then(res => res.json())
             .then(data => {
                 setallBookings(data);
                 setisloading(false);
             })
-    }, [render])
+    }, [render, displayBookingStat])
     return (
         <div>
-            <h2 className="jsectionhead">Manage all bookings<small style={{ display: 'block', fontSize: '14px', color: '#1D6B6F' }}>Total {allBookings.length} bookings</small></h2>
+            <h2 className="jsectionhead">Manage all bookings<small style={{ display: 'block', fontSize: '14px', color: '#1D6B6F' }}>Total {allBookings.length} {displayBookingStat} bookings</small></h2>
+
+            <div className="managebookings-btn" style={{ textAlign: 'center' }}>
+                <button className="jbutton" style={{ margin: '0px 5px' }} onClick={() => setdisplayBookingStat('paid')}>Paid</button>
+                <button className="jbutton" style={{ margin: '0px 5px' }} onClick={() => setdisplayBookingStat('unpaid')}>Unpaid</button>
+            </div>
+
             {
                 isloading ?
                     <div style={{ textAlign: 'center' }}>
