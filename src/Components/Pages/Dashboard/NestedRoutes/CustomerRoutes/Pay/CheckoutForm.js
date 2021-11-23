@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { Alert, CircularProgress } from '@mui/material';
+import { Alert, CircularProgress, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { useHistory } from 'react-router';
 
 const CheckoutForm = ({ apartmentData, customerData }) => {
@@ -10,8 +10,8 @@ const CheckoutForm = ({ apartmentData, customerData }) => {
     const [paymentLoading, setpaymentLoading] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
-    const { _id, price } = apartmentData;
-    const { displayName, email } = customerData;
+    const { _id, name, price } = apartmentData;
+    const { displayName, email, phone, address } = customerData;
     const history = useHistory();
 
     useEffect(() => {
@@ -93,29 +93,68 @@ const CheckoutForm = ({ apartmentData, customerData }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="checkout-form">
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+        <div className="checkout-page">
+            <div className="checkout-customer-info">
+                <h2>Your informations</h2>
+                <h4>
+                    <span style={{ color: '#3D777A', fontWeight: 'bold' }}>Your name: </span>{displayName}
+                </h4>
+                <h4>
+                    <span style={{ color: '#3D777A', fontWeight: 'bold' }}>Your email: </span>{email}
+                </h4>
+                <h4>
+                    <span style={{ color: '#3D777A', fontWeight: 'bold' }}>Your phone: </span>{phone}
+                </h4>
+                <h4>
+                    <span style={{ color: '#3D777A', fontWeight: 'bold' }}>Your address: </span>{address}
+                </h4>
+            </div>
+            <div className="apartment-informations">
+                <h2>Apartment informations</h2>
+                <TableContainer sx={{ overflowX: 'hidden' }}>
+                    <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                        <TableBody>
+                            <TableRow
+                                sx={{ '&:last-child td, &:last-child th': { border: 1, borderColor: '#CDD5E2' } }}
+                            >
+                                <TableCell align="left"><h3 style={{ color: '#3D777A', fontWeight: 'bold', margin: '5px' }}>Name</h3></TableCell>
+                                <TableCell align="left"><h4 style={{ margin: '5px' }}>{name}</h4></TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell align="left"><h3 style={{ color: '#3D777A', fontWeight: 'bold', margin: '5px' }}>Price</h3></TableCell>
+                                <TableCell align="left"><h4 style={{ margin: '5px' }}>{price}</h4></TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </div>
+            <form onSubmit={handleSubmit} className="checkout-form">
+                <h2>Your card information</h2>
+                <div className="card-input" style={{ marginTop: '15px', marginBottom: '20px' }}>
+                    <CardElement
+                        options={{
+                            style: {
+                                base: {
+                                    fontSize: '16px',
+                                    color: '#424770',
+                                    '::placeholder': {
+                                        color: '#aab7c4',
+                                    },
+                                },
+                                invalid: {
+                                    color: '#9e2146',
+                                },
                             },
-                        },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-            {error.length > 1 || success.length > 1 ? <Alert severity={error.length > 1 ? 'error' : 'success'}>{error || success}</Alert> : ''}
+                        }}
+                    />
+                </div>
+                {error.length > 1 || success.length > 1 ? <Alert severity={error.length > 1 ? 'error' : 'success'}>{error || success}</Alert> : ''}
 
-            {paymentLoading ? <CircularProgress size="30px" sx={{ color: '#1D6B6F' }} /> : <button className="jbutton" type="submit" disabled={!stripe} onClick={() => seterror('')}>
-                Pay {price}$
-            </button>}
-        </form>
+                {paymentLoading ? <CircularProgress size="30px" sx={{ color: '#1D6B6F' }} /> : <button className="jbutton" type="submit" disabled={!stripe} onClick={() => seterror('')}>
+                    Pay {price}$
+                </button>}
+            </form>
+        </div >
     );
 };
 

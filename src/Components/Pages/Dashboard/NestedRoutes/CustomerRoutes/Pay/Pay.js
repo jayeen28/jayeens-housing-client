@@ -4,6 +4,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import CheckoutForm from './CheckoutForm';
+import './Pay.css';
 
 const stripePromise = loadStripe('pk_test_51Jw3qQIWvMhhAaYpLP7xvJOml4vmmODu1zQIv0zgcoucUX8H1aGrfagBGwBWFHdSaeox3MFMyPEHLW1BtjDHuTYM00FKIPjjFk');
 
@@ -32,14 +33,16 @@ const Pay = () => {
 
     if (isLoading) { return 'LOADING CONTENTS . . . .' };
     return (
-        <Container>
-            <h2 className="jsectionhead">Pay for {id}</h2>
-            {price && customerData ? <Elements stripe={stripePromise}>
-                <CheckoutForm apartmentData={apartmentData} customerData={customerData} />
-            </Elements>
-                : 'LOADING CHECKOUT FORM. . . . '
-            }
-        </Container>
+        <div className="payment-page-wrapper" style={{ textAlign: 'left' }}>
+            <Container>
+                <h2 className="jsectionhead">Billing details</h2>
+                {price && customerData ? <Elements stripe={stripePromise}>
+                    <CheckoutForm apartmentData={apartmentData} customerData={customerData} />
+                </Elements>
+                    : 'LOADING CHECKOUT FORM. . . . '
+                }
+            </Container>
+        </div>
     );
 };
 
