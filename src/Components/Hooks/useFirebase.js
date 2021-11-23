@@ -94,12 +94,13 @@ const useFirebase = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data?.role === 'admin') {
-                        setisadmin(true)
+                        setisadmin(true);
+                        setisAdminLoading(false)
                     }
                     else {
                         setisadmin(false);
+                        setisAdminLoading(false)
                     }
-                    setisAdminLoading(false)
                 })
         }
     }, [user])
