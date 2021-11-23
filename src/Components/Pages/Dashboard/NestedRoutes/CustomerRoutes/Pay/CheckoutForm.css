@@ -1,0 +1,7 @@
+table.apartmentinfo-table {
+    width: 100%;
+    margin: auto;
+}
+.apartmentinfo-table td{
+    border: 1px solid grey;
+}

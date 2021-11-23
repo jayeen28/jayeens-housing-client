@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { Alert, CircularProgress, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { Alert, CircularProgress } from '@mui/material';
+import './CheckoutForm.css';
 import { useHistory } from 'react-router';
 
 const CheckoutForm = ({ apartmentData, customerData }) => {
@@ -93,7 +94,7 @@ const CheckoutForm = ({ apartmentData, customerData }) => {
     };
 
     return (
-        <div className="checkout-page">
+        <div className="checkout-section">
             <div className="checkout-customer-info">
                 <h2>Your informations</h2>
                 <h4>
@@ -109,24 +110,29 @@ const CheckoutForm = ({ apartmentData, customerData }) => {
                     <span style={{ color: '#3D777A', fontWeight: 'bold' }}>Your address: </span>{address}
                 </h4>
             </div>
+            <hr />
             <div className="apartment-informations">
                 <h2>Apartment informations</h2>
-                <TableContainer sx={{ overflowX: 'hidden' }}>
-                    <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-                        <TableBody>
-                            <TableRow
-                                sx={{ '&:last-child td, &:last-child th': { border: 1, borderColor: '#CDD5E2' } }}
-                            >
-                                <TableCell align="left"><h3 style={{ color: '#3D777A', fontWeight: 'bold', margin: '5px' }}>Name</h3></TableCell>
-                                <TableCell align="left"><h4 style={{ margin: '5px' }}>{name}</h4></TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell align="left"><h3 style={{ color: '#3D777A', fontWeight: 'bold', margin: '5px' }}>Price</h3></TableCell>
-                                <TableCell align="left"><h4 style={{ margin: '5px' }}>{price}</h4></TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                <table className="apartmentinfo-table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h4 style={{ color: '#3D777A', fontWeight: 'bold', margin: '5px' }}>Name:</h4>
+                            </td>
+                            <td>
+                                <h4 style={{ margin: '5px' }}>{name}</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4 style={{ color: '#3D777A', fontWeight: 'bold', margin: '5px' }}>Price:</h4>
+                            </td>
+                            <td>
+                                <h4 style={{ margin: '5px' }}>{price}</h4>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <form onSubmit={handleSubmit} className="checkout-form">
                 <h2>Your card information</h2>
@@ -154,7 +160,7 @@ const CheckoutForm = ({ apartmentData, customerData }) => {
                     Pay {price}$
                 </button>}
             </form>
-        </div >
+        </div>
     );
 };
 
