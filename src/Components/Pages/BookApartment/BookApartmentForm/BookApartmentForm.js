@@ -42,8 +42,8 @@ const BookApartmentForm = ({ isLoading, customerData, apartmentData }) => {
         const bookedBy = user.uid;
         const bookingInfo = { bookingDate, bookingTime, bookedBy };
         apartmentData.bookingInfo = bookingInfo;
-        apartmentData.bookstatus = 'pending';
-        fetch(' https://afternoon-earth-46164.herokuapp.com/apartment/book', {
+        apartmentData.bookstatus = 'Unpaid';
+        fetch('https://afternoon-earth-46164.herokuapp.com/apartment/book', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -54,7 +54,7 @@ const BookApartmentForm = ({ isLoading, customerData, apartmentData }) => {
             .then(data => {
                 if (data.acknowledged) {
                     reset();
-                    history.push('/thankyou')
+                    history.push('/dashboard/mybookings')
                     setisloading(false);
                 } else {
                     alert('Something went wrong');

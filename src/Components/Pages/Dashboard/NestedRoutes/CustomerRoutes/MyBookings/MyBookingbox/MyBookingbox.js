@@ -85,7 +85,7 @@ const MyBookingbox = ({ apartmentData, render, setrender }) => {
                     </div>
                     <div className="my-booking-btns">
                         <button className="jbutton" onClick={cancelBooking}>Cancel</button>
-                        <Link to={`/dashboard/pay/${_id}`} className="jbutton" >Checkout</Link>
+                        {bookstatus === 'Unpaid' && <Link to={`/dashboard/pay/${_id}`} className="jbutton" >Checkout</Link>}
                     </div>
                 </div>
             </Grid>

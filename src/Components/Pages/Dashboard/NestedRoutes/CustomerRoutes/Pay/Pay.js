@@ -12,7 +12,7 @@ const Pay = () => {
     const [isLoading, setisLoading] = useState(true);
     const [apartmentData, setapartmentData] = useState({});
     const [customerData, setCustomerData] = useState(null);
-    const { _id, name, img, description, price, bookingInfo } = apartmentData;
+    const { price, bookingInfo } = apartmentData;
 
     useEffect(() => {
         fetch(`https://afternoon-earth-46164.herokuapp.com/apartments/booked/${id}`)
@@ -35,7 +35,7 @@ const Pay = () => {
         <Container>
             <h2 className="jsectionhead">Pay for {id}</h2>
             {price && customerData ? <Elements stripe={stripePromise}>
-                <CheckoutForm price={price} customerData={customerData} />
+                <CheckoutForm apartmentData={apartmentData} customerData={customerData} />
             </Elements>
                 : 'LOADING CHECKOUT FORM. . . . '
             }

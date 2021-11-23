@@ -61,7 +61,11 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
     const updateBookingStatus = () => {
         setisLoading(true);
         fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments?id=${_id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ status: 'Confirmed' })
         })
             .then(res => res.json())
             .then(data => {
@@ -134,7 +138,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
                             {bookStat === 'pending' &&
                                 <>
                                     {isLoading && <CircularProgress sx={{ color: '#3D777A' }} size={26} />}
-                                    <button className="jbutton" onClick={updateBookingStatus}>Approve
+                                    <button className="jbutton" onClick={updateBookingStatus}>Confirm
                                     </button>
                                 </>
                             }

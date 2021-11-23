@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { Alert, CircularProgress } from '@mui/material';
+import { useHistory } from 'react-router';
 
-const CheckoutForm = ({ price, customerData }) => {
+const CheckoutForm = ({ apartmentData, customerData }) => {
     const [error, seterror] = useState('');
     const [success, setsuccess] = useState('');
     const [clientSecret, setclientSecret] = useState('');
     const [paymentLoading, setpaymentLoading] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
+    const { _id, price } = apartmentData;
     const { displayName, email } = customerData;
+    const history = useHistory();
 
     useEffect(() => {
         fetch('https://afternoon-earth-46164.herokuapp.com/create-payment-intent', {
@@ -36,7 +39,7 @@ const CheckoutForm = ({ price, customerData }) => {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
@@ -44,12 +47,10 @@ const CheckoutForm = ({ price, customerData }) => {
         if (error) {
             seterror(error.message);
             setsuccess('');
-        } else {
-            console.log('[PaymentMethod]', paymentMethod);
         }
 
         //PAYMENT INTENT
-        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+        const { error: intentError } = await stripe.confirmCardPayment(
             clientSecret,
             {
                 payment_method: {
@@ -67,12 +68,28 @@ const CheckoutForm = ({ price, customerData }) => {
             setpaymentLoading(false);
         }
         else {
-            console.log(paymentIntent)
             seterror('');
-            setsuccess('Your payment processed successfully');
-            setpaymentLoading(false);
-        }
+            setsuccess('Your payment request is successfull.');
 
+            //SEND TO DB
+            fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments?id=${_id}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ status: 'Processing' })
+            })
+                .then(res => res.json())
+                .then(({ modifiedCount }) => {
+                    if (modifiedCount > 0) {
+                        setpaymentLoading(false)
+                        history.push('/thankyou');
+                    }
+                    else {
+                        seterror('Your payment is done but unfortunately it is not updated to our database. It could be your internet issue. Please contact us here jayeenb@gmail.com');
+                    }
+                })
+        }
     };
 
     return (

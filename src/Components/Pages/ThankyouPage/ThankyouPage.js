@@ -12,8 +12,8 @@ const ThankyouPage = () => {
             <Container>
                 <div className="thankyou-page-contents">
                     <h1>Thank you for choosing us.</h1>
-                    <h3>We will contact you as soon as possible</h3>
-                    <Link to="/" className="jbutton">Go back to home page</Link>
+                    <h3>We will email you when the booking will be confirmed.</h3>
+                    <Link to="/dashboard/mybookings" className="jbutton">Click to see your bookings</Link>
                 </div>
             </Container>
             <Footer />
