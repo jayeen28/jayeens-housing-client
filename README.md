@@ -5,8 +5,8 @@ Welcome to Jayeen's Housing client side git repository. This project is based on
 ## Link of the live site [https://jayeens-housing.web.app](https://jayeens-housing.web.app) 
 
 Functionalities
-- Customer can book apartment.
-- Customer can see his all his bookings.
+- Specific dashboard for admin and customers.
+- Stripe card payment system.
 - Customer can delete any of his bookings.
-- Admin can see all bookings and he/she can approve or delete any of them.
+- Admin can see all bookings and he/she can confirm or delete any of them.
 - Only admin can make admin. Normal users cant access admin dashboard.
