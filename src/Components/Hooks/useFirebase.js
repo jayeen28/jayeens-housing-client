@@ -103,7 +103,7 @@ const useFirebase = () => {
                     }
                 })
         }
-    }, [user])
+    }, [user.uid])
 
     //USER OBSERVER 
     useEffect(() => {
