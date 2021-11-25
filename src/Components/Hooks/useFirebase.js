@@ -46,7 +46,7 @@ const useFirebase = () => {
         })
             .then(res => seterror(''))
             .catch(error => seterror(error.message))
-            .finally(() => { setnameLoading(false) })
+            .finally(() => { setnameLoading && setnameLoading(false) })
     }
 
     //UPDATE PROFILE IMAGE

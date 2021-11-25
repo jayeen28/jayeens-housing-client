@@ -32,7 +32,6 @@ const BookApartment = () => {
             })
     }, [user])
     const { name, img, price, description } = apartmentData;
-
     return (
         <div className="book-apartment-page">
             <Header />
