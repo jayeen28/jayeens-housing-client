@@ -15,28 +15,19 @@ import './Dashboard.css'
 const drawerWidth = 268;
 
 function Dashboard(props) {
-    const { user, isadmin, isAdminLoading } = useAuth();
-    const [currentUser, setcurrentUser] = React.useState({});
+    const { isadmin, isAdminLoading } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [isLoading, setisLoading] = React.useState(true);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-    //GET CURRENT USER
-    React.useEffect(() => {
-        fetch(`https://afternoon-earth-46164.herokuapp.com/users?uid=${user.uid}`)
-            .then(res => res.json())
-            .then(data => setcurrentUser(data))
-        setisLoading(false);
-    }, [user])
+
     const drawer = (
         //SIEBAR NAV
-        <SideNav isUserLoading={isLoading} currentUser={currentUser} />
+        <SideNav isAdminLoading={isAdminLoading} isadmin={isadmin} />
         //
     );
-
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (

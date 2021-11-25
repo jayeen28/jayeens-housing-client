@@ -11,7 +11,7 @@ import CustomerNav from './CustomerNav/CustomerNav';
 import { CircularProgress } from '@mui/material';
 import jayeensHousingBanner from '../../../../images/jayeens-housing-transparent.png';
 
-const SideNav = ({ isLoading, currentUser }) => {
+const SideNav = ({ isAdminLoading, isadmin }) => {
     const { userSignout } = useAuth();
     return (
         <div>
@@ -27,22 +27,13 @@ const SideNav = ({ isLoading, currentUser }) => {
 
             </List>
             {
-                currentUser._id ?
+                isAdminLoading ? <CircularProgress sx={{ color: '#3D777A' }} /> :
                     <>
                         {
-                            isLoading ? <CircularProgress sx={{ color: '#3D777A' }} /> :
-                                <>
-                                    {
-                                        currentUser.role === 'admin' ? <AdminNav /> : <CustomerNav />
-                                    }
-                                </>
-
+                            isadmin ? <AdminNav /> : <CustomerNav />
                         }
                     </>
-                    :
-                    <div style={{ textAlign: 'center' }}>
-                        <CircularProgress sx={{ color: '#3D777A' }} />
-                    </div>
+
             }
             <Divider />
             <List>
