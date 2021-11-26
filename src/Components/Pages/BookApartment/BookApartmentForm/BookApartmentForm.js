@@ -14,8 +14,8 @@ const BookApartmentForm = ({ isLoading, customerData, apartmentData }) => {
     setValue('customerName', `${user.displayName}`);
     setValue('customerEmail', `${user.email}`);
     if (customerData.phone) {
-        setValue('customerPhone', `${customerData.phone}`);
-        setValue('customerAddress', `${customerData.address}`)
+        setValue('customerPhone', `${customerData.phone || ''}`);
+        setValue('customerAddress', `${customerData.address || ''}`)
     }
 
     //HANDLE BOOK NOW FORM
