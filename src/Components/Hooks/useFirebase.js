@@ -85,32 +85,33 @@ const useFirebase = () => {
     //CHECK IF LOGED IN USER ADMIN OR NOT
     useEffect(() => {
         if (user.uid) {
-            fetch(`https://afternoon-earth-46164.herokuapp.com/users/authenticate?uid=${user.uid}`, {
-                headers: {
-                    'authorization': `Bearer ${localStorage.getItem('idToken')}`
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data?.role === 'admin') {
-                        setisadmin(true);
-                        setisAdminLoading(false)
-                    }
-                    else {
-                        setisadmin(false);
-                        setisAdminLoading(false)
-                    }
+            getIdToken(user)
+                .then(idToken => {
+                    fetch(`http://localhost:5000/users/authenticate?uid=${user.uid}`, {
+                        headers: {
+                            'authorization': `Bearer ${idToken}`
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data?.role === 'admin') {
+                                setisadmin(true);
+                                setisAdminLoading(false)
+                            }
+                            else {
+                                setisadmin(false);
+                                setisAdminLoading(false)
+                            }
+                        })
                 })
         }
-    }, [user.uid])
+    }, [user, user.uid])
 
     //USER OBSERVER 
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             setisLoading(true);
             if (user) {
-                getIdToken(user)
-                    .then(idToken => localStorage.setItem('idToken', idToken))
                 setuser(user);
             }
             else {
