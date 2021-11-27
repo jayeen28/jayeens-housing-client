@@ -27,7 +27,6 @@ const BookApartment = () => {
         fetch(`https://afternoon-earth-46164.herokuapp.com/users?uid=${user.uid}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setcustomerData(data);
                 setisLoading(false);
             })

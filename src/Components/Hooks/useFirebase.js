@@ -85,7 +85,11 @@ const useFirebase = () => {
     //CHECK IF LOGED IN USER ADMIN OR NOT
     useEffect(() => {
         if (user.uid) {
-            fetch(`https://afternoon-earth-46164.herokuapp.com/users?uid=${user.uid}`)
+            fetch(`https://afternoon-earth-46164.herokuapp.com/users/authenticate?uid=${user.uid}`, {
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('idToken')}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => {
                     if (data?.role === 'admin') {
