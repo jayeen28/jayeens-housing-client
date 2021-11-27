@@ -9,7 +9,7 @@ const ManageAllBookings = () => {
     const [displayBookingStat, setdisplayBookingStat] = useState('Confirmed');
     useEffect(() => {
         setisloading(true)
-        fetch(`http://localhost:5000/bookedapartments/${displayBookingStat}`)
+        fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments/${displayBookingStat}`)
             .then(res => res.json())
             .then(data => {
                 setallBookings(data);

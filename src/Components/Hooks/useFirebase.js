@@ -87,7 +87,7 @@ const useFirebase = () => {
         if (user.uid) {
             getIdToken(user)
                 .then(idToken => {
-                    fetch(`http://localhost:5000/users/authenticate?uid=${user.uid}`, {
+                    fetch(`https://afternoon-earth-46164.herokuapp.com/users/authenticate?uid=${user.uid}`, {
                         headers: {
                             'authorization': `Bearer ${idToken}`
                         }
