@@ -34,6 +34,11 @@
     width: 100%;
     justify-content: space-between;
 }
+.managebookings-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .customer-info {
     display: flex;
     width: 95%;
