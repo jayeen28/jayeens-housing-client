@@ -1,6 +1,7 @@
 import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ReviewBox from './ReviewBox.js/ReviewBox';
+import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
 import './HomeReviews.css';
 
@@ -18,9 +19,11 @@ const HomeReviews = () => {
                 {reviews.length === 0 ? <p style={{ textAlign: 'center' }}>No reviews to show. Please give us a review.</p> :
                     <div className="review-boxes">
                         <Swiper
+                            className="reviews-swiper"
+                            modules={[Pagination]}
                             breakpoints={{
-                                200: {
-                                    width: 200,
+                                300: {
+                                    width: 250,
                                     slidesPerView: 1
                                 },
                                 600: {
