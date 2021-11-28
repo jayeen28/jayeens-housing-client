@@ -7,6 +7,7 @@ Welcome to Jayeen's Housing client side git repository. This project is based on
 Functionalities
 - Specific dashboard for admin and customers.
 - Stripe card payment system.
+- Swiper js for reviews slider.
 - Customers can delete any of his bookings.
 - Customers can review with dynamic star rating system.
 - Admin can see all paid, unpaid and confirmed booking separately.
