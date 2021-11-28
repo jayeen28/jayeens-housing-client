@@ -1,4 +1,4 @@
-import { Grid, Rating } from '@mui/material';
+import { Rating } from '@mui/material';
 import React, { useState } from 'react';
 import './ReviewBox.css';
 
@@ -20,7 +20,7 @@ const ReviewBox = ({ customerReview }) => {
         }
     }
     return (
-        <Grid item xs={12} sm={12} md={4}>
+        <div>
             <div className="reviewbox">
                 <div className="rbox-head">
                     <h4 style={{ fontStyle: 'italic', textTransform: 'capitalize', margin: '0px' }}>{name}</h4>
@@ -39,7 +39,7 @@ const ReviewBox = ({ customerReview }) => {
                     }
                 </div>
             </div>
-        </Grid>
+        </div>
     );
 };
 

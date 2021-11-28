@@ -1,7 +1,8 @@
-import { Container, Grid } from '@mui/material';
+import { Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import ReviewBox from './ReviewBox.js/ReviewBox';
-import './HomeReviews.css'
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
+import './HomeReviews.css';
 
 const HomeReviews = () => {
     const [reviews, setreviews] = useState([]);
@@ -16,11 +17,29 @@ const HomeReviews = () => {
                 <h2 className="jsectionhead">Reviews</h2>
                 {reviews.length === 0 ? <p style={{ textAlign: 'center' }}>No reviews to show. Please give us a review.</p> :
                     <div className="review-boxes">
-                        <Grid container>
+                        <Swiper
+                            breakpoints={{
+                                200: {
+                                    width: 200,
+                                    slidesPerView: 1
+                                },
+                                600: {
+                                    width: 600,
+                                    slidesPerView: 2,
+                                },
+                                1215: {
+                                    width: 1215,
+                                    slidesPerView: 3,
+                                },
+                            }}
+                            spaceBetween={10}
+                            slidesPerView={3}
+                            pagination={{ clickable: true }}
+                        >
                             {
-                                reviews.map(rvw => <ReviewBox key={rvw._id} customerReview={rvw} />)
+                                reviews.map(rvw => <SwiperSlide key={rvw._id}><ReviewBox key={rvw._id} customerReview={rvw} /></SwiperSlide>)
                             }
-                        </Grid>
+                        </Swiper>
                     </div>
                 }
             </Container>
