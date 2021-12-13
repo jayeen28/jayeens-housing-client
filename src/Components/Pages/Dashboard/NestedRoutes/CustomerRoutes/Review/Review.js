@@ -3,9 +3,11 @@ import { useForm } from 'react-hook-form';
 import TextField from '@mui/material/TextField';
 import { Rating } from '@mui/material';
 import useAuth from '../../../../../Hooks/useAuth';
+import useSwal from '../../../../../Hooks/useSwal.js';
 import './Review.css';
 
 const Review = () => {
+    const { postSwal } = useSwal();
     const { user } = useAuth();
     const [rating, setrating] = useState(0);
     const { register, handleSubmit, setValue, reset } = useForm();
@@ -14,23 +16,11 @@ const Review = () => {
     const onSubmit = data => {
         data.reviewedBy = user.email;
         data.rating = rating;
-        fetch('https://afternoon-earth-46164.herokuapp.com/reviews/add', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    alert('Your review has been submitted');
-                    reset();
-                }
-                else {
-                    alert('Something went wrong!')
-                }
-            })
+        const url = 'https://afternoon-earth-46164.herokuapp.com/reviews/add';
+        const formData = data;
+        const successTitle = 'Your review has been submitted';
+        const errorTitle = 'Something went wrong!';
+        postSwal(url, formData, successTitle, errorTitle, reset);
     }
     return (
         <div>

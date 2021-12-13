@@ -1,24 +1,14 @@
 import { Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import React from 'react';
+import useSwal from '../../../../../../Hooks/useSwal';
 
 const MApartmentBox = ({ apartment, render, setrender }) => {
+    const { swalModal } = useSwal();
     const { _id, name, img, price, description } = apartment;
     const deleteApartment = () => {
-        const deleteres = window.confirm('Are you sure that you want to delete?')
-        if (deleteres) {
-            fetch(`https://afternoon-earth-46164.herokuapp.com/apartments/delete?id=${_id}`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount) {
-                        render ? setrender(false) : setrender(true);
-                    }
-                    else {
-                        alert('Something went wrong!')
-                    }
-                })
-        }
+        const url = `https://afternoon-earth-46164.herokuapp.com/apartments/delete?id=${_id}`;
+        const title = 'Are you sure that you want to delete this apartment?';
+        swalModal(title, url, render, setrender);
     }
     return (
         <Grid item xs={12} sm={12} md={6} lg={6}>

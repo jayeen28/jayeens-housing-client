@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { Alert, CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import './CheckoutForm.css';
 import { useHistory } from 'react-router';
+import useSwal from '../../../../../Hooks/useSwal';
 
 const CheckoutForm = ({ apartmentData, customerData }) => {
+    const { openSwal } = useSwal();
     const [error, seterror] = useState('');
     const [success, setsuccess] = useState('');
     const [clientSecret, setclientSecret] = useState('');
@@ -154,7 +156,9 @@ const CheckoutForm = ({ apartmentData, customerData }) => {
                         }}
                     />
                 </div>
-                {error.length > 1 || success.length > 1 ? <Alert severity={error.length > 1 ? 'error' : 'success'}>{error || success}</Alert> : ''}
+                {
+                    error.length > 1 || success.length > 1 ? error.length > 1 ? openSwal(error, 'warning') : openSwal(success, 'success') : ''
+                }
 
                 {paymentLoading ? <CircularProgress size="30px" sx={{ color: '#1D6B6F' }} /> : <button className="jbutton" type="submit" disabled={!stripe} onClick={() => seterror('')}>
                     Pay {price}$

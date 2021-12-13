@@ -3,8 +3,10 @@ import { Grid, useTheme } from '@mui/material';
 import './MyBookingbox.css';
 import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
+import useSwal from '../../../../../../Hooks/useSwal';
 
 const MyBookingbox = ({ apartmentData, render, setrender }) => {
+    const { swalModal } = useSwal();
     const { _id, name, img, description, price, bookstatus, bookingInfo } = apartmentData;
     const { bookingDate, bookingTime } = bookingInfo;
     const [readBtn, setreadBtn] = useState(true);
@@ -25,21 +27,9 @@ const MyBookingbox = ({ apartmentData, render, setrender }) => {
     }
 
     const cancelBooking = () => {
-        const confirmRes = window.confirm("Are you sure that you want to cancel?");
-        if (confirmRes) {
-            fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments/delete?id=${_id}`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount) {
-                        render ? setrender(false) : setrender(true);
-                    }
-                    else {
-                        alert('Something went wrong!')
-                    }
-                })
-        }
+        const url = `https://afternoon-earth-46164.herokuapp.com/bookedapartments/delete?id=${_id}`;
+        const title = "Are you sure that you want to cancel?";
+        swalModal(title, url, render, setrender);
     }
     const theme = useTheme();
     const useStyle = makeStyles({

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { CircularProgress, Grid, useTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import './ManageAllBookingBox.css';
+import useSwal from '../../../../../../Hooks/useSwal';
 
 const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
+    const { swalModal } = useSwal();
     const { _id, name, img, description, price, bookstatus, bookingInfo } = bookingData;
     const { bookingDate, bookingTime, bookedBy } = bookingInfo;
     const [bookStat, setbookStat] = useState(bookstatus);
@@ -40,21 +42,9 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
 
     //DELETE BOOKING
     const deleteBook = () => {
-        const deleteRes = window.confirm('Are you sure, you want to delete?');
-        if (deleteRes) {
-            fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments/delete?id=${_id}`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        render ? setrender(false) : setrender(true);
-                    }
-                    else {
-                        alert('Something went wrong')
-                    }
-                })
-        }
+        const url = `https://afternoon-earth-46164.herokuapp.com/bookedapartments/delete?id=${_id}`;
+        const title = "Are you sure you want to delete?";
+        swalModal(title, url, render, setrender)
     }
 
     //APPROVE BOOKING

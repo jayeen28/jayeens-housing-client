@@ -2,27 +2,17 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import { useForm } from 'react-hook-form';
 import './AddApartment.css';
+import useSwal from '../../../../../Hooks/useSwal';
 
 const AddApartment = () => {
+    const { postSwal } = useSwal();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        fetch('https://afternoon-earth-46164.herokuapp.com/apartments/add', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    alert('Apartment is added');
-                    reset();
-                }
-                else {
-                    alert('Something went wrong.');
-                }
-            })
+        const url = 'https://afternoon-earth-46164.herokuapp.com/apartments/add';
+        const formData = data;
+        const successTitle = 'Apartment is added.';
+        const errorTitle = 'Something went wrong.';
+        postSwal(url, formData, successTitle, errorTitle, reset);
     }
     return (
         <div>

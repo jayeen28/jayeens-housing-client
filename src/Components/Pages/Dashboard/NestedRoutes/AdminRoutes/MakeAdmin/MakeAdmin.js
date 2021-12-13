@@ -1,25 +1,27 @@
 import { TextField } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import useSwal from '../../../../../Hooks/useSwal';
 import './MakeAdmin.css';
 
 const MakeAdmin = () => {
     const { handleSubmit, register, reset } = useForm();
+    const { openSwal } = useSwal();
     const onSubmit = data => {
         fetch(`https://afternoon-earth-46164.herokuapp.com/users/makeadmin?email=${data.adminEmail}`, {
             method: 'PUT'
         }).then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('Admin has been added');
+                    openSwal('Admin has been added', 'success');
                     reset();
                 }
                 else if (data.matchedCount === 0) {
-                    alert('No user found of this email in the database');
+                    openSwal('No user found of this email in the database', 'warning');
                     reset();
                 }
                 else {
-                    alert('Something went wrong');
+                    openSwal('Admin is not added. Please try again.', 'warning');
                 }
             })
     }
