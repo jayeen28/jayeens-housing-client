@@ -8,6 +8,7 @@ import './ThankyouPage.css';
 const ThankyouPage = () => {
     return (
         <div>
+            {/* thank you page */}
             <Header />
             <Container>
                 <div className="thankyou-page-contents">
