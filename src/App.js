@@ -7,6 +7,7 @@ import Dashboard from './Components/Pages/Dashboard/Dashboard';
 import ErrorPage from './Components/Pages/ErrorPage/ErrorPage';
 import Home from './Components/Pages/Home/Home';
 import ProfilePage from './Components/Pages/ProfilePage/ProfilePage';
+import VoiceCommand from './Components/Pages/Shared/VoiceCommand/VoiceCommand';
 import SignIn from './Components/Pages/SignIn/SignIn';
 import SignUp from './Components/Pages/SignUp/SignUp';
 import ThankyouPage from './Components/Pages/ThankyouPage/ThankyouPage';
@@ -49,6 +50,7 @@ function App() {
               <ErrorPage />
             </Route>
           </Switch>
+          <VoiceCommand />
         </Router>
       </AuthProvider>
     </div>
