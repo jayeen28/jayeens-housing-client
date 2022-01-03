@@ -12,22 +12,23 @@ const VoiceCommand = () => {
     const pageUrls = {
         home: '/',
         apartments: '/apartments',
-        signin: '/signin',
-        signup: '/signup',
+        'sign in': '/signin',
+        'sign up': '/signup',
         dashboard: '/dashboard',
     }
     useEffect(() => {
         if (!listening && transcript !== '') {
-            const matchedRoute = Object.keys(pageUrls).find(key => {
+            let matchedRoute;
+            Object.keys(pageUrls).forEach(key => {
                 if (transcript.includes(key)) {
-                    return pageUrls[key];
+                    matchedRoute = pageUrls[key];
                 }
             });
             history.push(matchedRoute)
 
         }
     }, [listening, pageUrls, transcript, history]);
-
+    console.log(transcript)
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
         return null;
     }
