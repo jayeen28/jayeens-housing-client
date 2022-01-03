@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Container, Grid, TextField } from '@mui/material';
+import React from 'react';
+import { Container, Grid, TextField } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Footer.css';
 import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faMicrophoneAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
 import footerbrand from '../../../../images/jayeens-housing-footer.png';
-import { useHistory } from 'react-router-dom';
 
 
 const Footer = () => {

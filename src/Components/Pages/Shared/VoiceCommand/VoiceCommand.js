@@ -26,7 +26,7 @@ const VoiceCommand = () => {
             history.push(matchedRoute)
 
         }
-    }, [listening, pageUrls, transcript]);
+    }, [listening, pageUrls, transcript, history]);
 
     if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
         return null;
