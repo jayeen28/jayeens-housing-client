@@ -3,10 +3,12 @@
     position: fixed!important;
     right: 2%;
     bottom: 3%;
-    padding: 20px 27px!important;
-    font-size: 44px!important;
-    border-radius: 100%!important;
-    color: white;
     background-color: #1D6B6F!important;
-    border: 2px solid #1D6B6F!important;
+}
+
+@media only screen and(max-width:800px){
+    .takeVoiceBtn{
+        padding: 13px 10px;
+        font-size: 26px;
+    }
 }

@@ -9,6 +9,15 @@ import './VoiceCommand.css';
 const VoiceCommand = () => {
     const { transcript, listening } = useSpeechRecognition();
     let history = useHistory();
+    const voiceBtnStyle = {
+        borderRadius: '100%',
+        color: 'white',
+        cursor: 'pointer',
+        fontSize: '44px',
+        padding: '20px 27px',
+        ['@media (max-width:780px)']: { padding: '18px 0px', fontSize: '30px' }
+    };
+
     const pageUrls = {
         home: '/',
         apartments: '/apartments',
@@ -34,7 +43,7 @@ const VoiceCommand = () => {
     }
     return (
         <div className='takeVoiceBtnWrapper'>
-            <Button title={listening ? transcript : ''} variant='contained' className="takeVoiceBtn" onClick={listening ? SpeechRecognition.stopListening : SpeechRecognition.startListening} style={{ cursor: 'pointer', color: `${listening ? '#D01818' : 'white'}` }}><FontAwesomeIcon icon={faMicrophoneAlt} /></Button>
+            <Button title={listening ? transcript : ''} variant='contained' className="takeVoiceBtn" onClick={listening ? SpeechRecognition.stopListening : SpeechRecognition.startListening} style={{ cursor: 'pointer', color: `${listening ? '#D01818' : 'white'}` }} sx={voiceBtnStyle}><FontAwesomeIcon icon={faMicrophoneAlt} /></Button>
         </div>
     );
 };
