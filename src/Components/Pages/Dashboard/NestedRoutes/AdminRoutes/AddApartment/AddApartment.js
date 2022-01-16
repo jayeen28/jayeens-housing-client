@@ -8,7 +8,7 @@ const AddApartment = () => {
     const { postSwal } = useSwal();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        const url = 'https://afternoon-earth-46164.herokuapp.com/apartments/add';
+        const url = `${process.env.REACT_APP_SERVER_URL}apartments/add`;
         const formData = data;
         const successTitle = 'Apartment is added.';
         const errorTitle = 'Something went wrong.';

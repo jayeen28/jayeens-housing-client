@@ -6,7 +6,7 @@ const MApartmentBox = ({ apartment, render, setrender }) => {
     const { swalModal } = useSwal();
     const { _id, name, img, price, description } = apartment;
     const deleteApartment = () => {
-        const url = `https://afternoon-earth-46164.herokuapp.com/apartments/delete?id=${_id}`;
+        const url = `${process.env.REACT_APP_SERVER_URL}apartments/delete?id=${_id}`;
         const title = 'Are you sure that you want to delete this apartment?';
         swalModal(title, url, render, setrender);
     }

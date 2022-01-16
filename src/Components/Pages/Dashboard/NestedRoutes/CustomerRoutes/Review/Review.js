@@ -16,7 +16,7 @@ const Review = () => {
     const onSubmit = data => {
         data.reviewedBy = user.email;
         data.rating = rating;
-        const url = 'https://afternoon-earth-46164.herokuapp.com/reviews/add';
+        const url = `${process.env.REACT_APP_SERVER_URL}reviews/add`;
         const formData = data;
         const successTitle = 'Your review has been submitted';
         const errorTitle = 'Something went wrong!';

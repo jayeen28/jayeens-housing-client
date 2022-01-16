@@ -16,7 +16,7 @@ const Pay = () => {
     const { price, bookingInfo } = apartmentData;
 
     useEffect(() => {
-        fetch(`https://afternoon-earth-46164.herokuapp.com/apartments/booked/${id}`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}apartments/booked/${id}`)
             .then(res => res.json())
             .then(data => {
                 setapartmentData(data);
@@ -26,7 +26,7 @@ const Pay = () => {
 
     //GET CUSTOMER INFO
     useEffect(() => {
-        fetch(`https://afternoon-earth-46164.herokuapp.com/users?uid=${bookingInfo?.bookedBy}`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}users?uid=${bookingInfo?.bookedBy}`)
             .then(res => res.json())
             .then(data => setCustomerData(data));
     }, [bookingInfo?.bookedBy])

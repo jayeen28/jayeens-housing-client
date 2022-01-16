@@ -8,7 +8,7 @@ import './HomeReviews.css';
 const HomeReviews = () => {
     const [reviews, setreviews] = useState([]);
     useEffect(() => {
-        fetch('https://afternoon-earth-46164.herokuapp.com/reviews')
+        fetch(`${process.env.REACT_APP_SERVER_URL}reviews`)
             .then(res => res.json())
             .then(data => setreviews(data))
     }, [])

@@ -18,7 +18,7 @@ const CheckoutForm = ({ apartmentData, customerData }) => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('https://afternoon-earth-46164.herokuapp.com/create-payment-intent', {
+        fetch(`${process.env.REACT_APP_SERVER_URL}create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -75,7 +75,7 @@ const CheckoutForm = ({ apartmentData, customerData }) => {
             setsuccess('Your payment request is successfull.');
 
             //SEND TO DB
-            fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments?id=${_id}`, {
+            fetch(`${process.env.REACT_APP_SERVER_URL}bookedapartments?id=${_id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

@@ -32,7 +32,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
 
     //GET CUSTOMER INFO 
     useEffect(() => {
-        fetch(`https://afternoon-earth-46164.herokuapp.com/users?uid=${bookedBy}`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}users?uid=${bookedBy}`)
             .then(res => res.json())
             .then(data => {
                 setcustomerData(data)
@@ -42,7 +42,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
 
     //DELETE BOOKING
     const deleteBook = () => {
-        const url = `https://afternoon-earth-46164.herokuapp.com/bookedapartments/delete?id=${_id}`;
+        const url = `${process.env.REACT_APP_SERVER_URL}bookedapartments/delete?id=${_id}`;
         const title = "Are you sure you want to delete?";
         swalModal(title, url, render, setrender)
     }
@@ -50,7 +50,7 @@ const ManageAllBookingBox = ({ bookingData, setrender, render }) => {
     //APPROVE BOOKING
     const updateBookingStatus = () => {
         setisLoading(true);
-        fetch(`https://afternoon-earth-46164.herokuapp.com/bookedapartments?id=${_id}`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}bookedapartments?id=${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

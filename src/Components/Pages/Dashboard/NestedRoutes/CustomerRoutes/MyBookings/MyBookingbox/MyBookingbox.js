@@ -27,7 +27,7 @@ const MyBookingbox = ({ apartmentData, render, setrender }) => {
     }
 
     const cancelBooking = () => {
-        const url = `https://afternoon-earth-46164.herokuapp.com/bookedapartments/delete?id=${_id}`;
+        const url = `${process.env.REACT_APP_SERVER_URL}bookedapartments/delete?id=${_id}`;
         const title = "Are you sure that you want to cancel?";
         swalModal(title, url, render, setrender);
     }

@@ -16,7 +16,7 @@ const useFirebase = () => {
     const setCustomerToDb = (user) => {
         const { uid, displayName, email } = user;
 
-        fetch('https://afternoon-earth-46164.herokuapp.com/users', {
+        fetch(`${process.env.REACT_APP_SERVER_URL}users`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -87,7 +87,7 @@ const useFirebase = () => {
         if (user.uid) {
             getIdToken(user)
                 .then(idToken => {
-                    fetch(`https://afternoon-earth-46164.herokuapp.com/users/authenticate?uid=${user.uid}`, {
+                    fetch(`${process.env.REACT_APP_SERVER_URL}users/authenticate?uid=${user.uid}`, {
                         headers: {
                             'authorization': `Bearer ${idToken}`
                         }

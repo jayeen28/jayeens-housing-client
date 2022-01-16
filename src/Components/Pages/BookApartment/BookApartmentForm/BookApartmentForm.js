@@ -28,7 +28,7 @@ const BookApartmentForm = ({ isLoading, customerData, apartmentData }) => {
         //SEND CUSTOMER INFO TO DATABSE
         customerData.address = data.customerAddress
         customerData.phone = data.customerPhone;
-        fetch('https://afternoon-earth-46164.herokuapp.com/users', {
+        fetch(`${process.env.REACT_APP_SERVER_URL}users`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const BookApartmentForm = ({ isLoading, customerData, apartmentData }) => {
         const bookingInfo = { bookingDate, bookingTime, bookedBy };
         apartmentData.bookingInfo = bookingInfo;
         apartmentData.bookstatus = 'Unpaid';
-        fetch('https://afternoon-earth-46164.herokuapp.com/apartment/book', {
+        fetch(`${process.env.REACT_APP_SERVER_URL}apartment/book`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

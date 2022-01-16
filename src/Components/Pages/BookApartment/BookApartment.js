@@ -17,14 +17,14 @@ const BookApartment = () => {
 
     //GET APARTMENT DATA
     useEffect(() => {
-        fetch(`https://afternoon-earth-46164.herokuapp.com/apartment/${id}`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}apartment/${id}`)
             .then(res => res.json())
             .then(data => setapartmentData(data));
     }, [id])
 
     //GET CUSTOMER DATA
     useEffect(() => {
-        fetch(`https://afternoon-earth-46164.herokuapp.com/users?uid=${user.uid}`)
+        fetch(`${process.env.REACT_APP_SERVER_URL}users?uid=${user.uid}`)
             .then(res => res.json())
             .then(data => {
                 setcustomerData(data);

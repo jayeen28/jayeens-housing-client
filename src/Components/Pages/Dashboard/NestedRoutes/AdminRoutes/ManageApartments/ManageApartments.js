@@ -7,7 +7,7 @@ const ManageApartments = () => {
     const [isloading, setisloading] = useState(true);
     const [render, setrender] = useState(false);
     useEffect(() => {
-        fetch('https://afternoon-earth-46164.herokuapp.com/apartments')
+        fetch(`${process.env.REACT_APP_SERVER_URL}apartments`)
             .then(res => res.json())
             .then(data => {
                 setapartments(data);

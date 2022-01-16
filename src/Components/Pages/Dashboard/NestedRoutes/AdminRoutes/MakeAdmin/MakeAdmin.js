@@ -8,7 +8,7 @@ const MakeAdmin = () => {
     const { handleSubmit, register, reset } = useForm();
     const { openSwal } = useSwal();
     const onSubmit = data => {
-        fetch(`https://afternoon-earth-46164.herokuapp.com/users/makeadmin?email=${data.adminEmail}`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}users/makeadmin?email=${data.adminEmail}`, {
             method: 'PUT'
         }).then(res => res.json())
             .then(data => {
