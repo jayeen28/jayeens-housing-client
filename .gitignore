@@ -7,6 +7,8 @@
 tempo.json
 requirement.txt
 imgs
+package-lock.json
+yarn.lock
 # testing
 /coverage
 
